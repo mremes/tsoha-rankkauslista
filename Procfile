@@ -1,1 +1,1 @@
-web: gunicorn --preload --workers 1 tsoha-rankkauslista:app
+web: gunicorn --preload --workers 1 main:app
