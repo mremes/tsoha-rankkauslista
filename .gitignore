@@ -1,6 +1,6 @@
 # Personal gitignores
 .idea
-
+*db
 # gitignore for Flask: https://github.com/deis/example-python-flask/blob/master/.gitignore
 
 *.py[co]

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <form method="POST" action="{{ url_for('create_player') }}">
+  First name:<br>
+  <input type="text" name="name">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

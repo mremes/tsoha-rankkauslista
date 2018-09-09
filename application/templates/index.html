@@ -1,7 +1,26 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-    Hello world!
-  </p>
+    <p>
+        <b>Tennis Grand Ranking</b><br><br>
+        {% if players and players|length > 0 %}
+            <b>Registered Players</b>
+            <table class="table">
+            <thead class="thead-dark">
+                <th>Name</th>
+                <th>TGR Score</th>
+            </thead>
+            <tbody>
+                {% for p in players %}
+                    <tr>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.score }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        {% else %}
+            <p>No registered players.</p>
+        {% endif %}
+    </p>
 {% endblock %}

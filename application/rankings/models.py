@@ -1,35 +1,53 @@
 from application import db
 
 
-class BaseModel:
-    @db.declared_attr
-    def __tablename__(self):
-        return self.__name__.lower()
+class Player(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    registered_dt = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+    def __init__(self, name: str):
+        self.name = name
+
+    @property
+    def score(self):
+        return 0
 
 
-class IdModel(BaseModel):
+class Association(db.Model):
+    __tablename__ = 'association'
     id = db.Column(db.Integer, primary_key=True)
 
-
-class Player(IdModel, db.Model):
-    registered_ts = db.Column(db.Time)
-
-
-class Association(IdModel, db.Model):
-    pass
-
     
-class RankingList(IdModel, db.Model):
+class RankingList(db.Model):
+    __tablename__ = 'rankinglist'
+
+    id = db.Column(db.Integer, primary_key=True)
     assoc_id = db.Column(db.Integer, db.ForeignKey('association.id'))
 
+    def __init__(self, assoc: Association):
+        self.assoc_id = assoc.id
 
-class Ranking(IdModel, db.Model):
+
+class Ranking(db.Model):
+    __tablename__ = 'ranking'
+
+    id = db.Column(db.Integer, primary_key=True)
     player_id = db.Column(db.Integer, db.ForeignKey('player.id'))
     list_id = db.Column(db.Integer, db.ForeignKey('rankinglist.id'))
 
+    def __init__(self, player: Player, rankinglist: RankingList):
+        self.player_id = player.id
+        self.list_id = rankinglist.id
 
-class RankingRecord(BaseModel, db.Model):
+
+class RankingRecord(db.Model):
+    __tablename__ = 'rankingrecord'
+
+    id = db.Column(db.Integer, primary_key=True)
     ranking_id = db.Column(db.Integer, db.ForeignKey('ranking.id'))
-    updated_ts = db.Column(db.Time)
+    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
     score = db.Column(db.Integer)
 
+    def __init__(self, ranking: Ranking):
+        self.ranking_id = ranking.id
