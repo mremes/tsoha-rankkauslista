@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if fail_message %}
+        <p style="color:red">{{ fail_message }}</p>
+    {% elif success_message %}
+        <p>{{ success_message }}</p>
+    {% else %}
+        <form method="POST" action="{{ url_for('create_player') }}">
+            Nimi:<br>
+            <input type="text" name="name" title="name">
+            <br><br>
+            <input type="submit" value="Rekisteröi">
+        </form>
+    {% endif %}
+{% endblock %}
