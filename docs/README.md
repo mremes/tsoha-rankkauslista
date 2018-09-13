@@ -1,6 +1,7 @@
 # Tennis Grand Ranking
 * [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/)
 * [User storiet](/docs/user_stories.md)
+* [Tietokantakaavio](/docs/images/ermodel.jpg)
 
 Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovellus -kurssin](https://courses.helsinki.fi/fi/tkt20011/124960890) suorittamiseksi. Tavoitteena on luoda Python-backendia – erityisesti Flask-kirjastoa – käyttävä verkkosovellus.
 
