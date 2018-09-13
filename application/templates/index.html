@@ -1,26 +1,31 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <p>
-        <b>Tennis Grand Ranking</b><br><br>
-        {% if players and players|length > 0 %}
-            <b>Registered Players</b>
-            <table class="table">
+    {% if players and players|length > 0 %}
+        <h3>TGR-listan top 10 pelaajaa</h3>
+        <table class="table table-striped table-bordered">
             <thead class="thead-dark">
-                <th>Name</th>
-                <th>TGR Score</th>
+            <tr>
+                <th>Nimi</th>
+                <th>TGR-pisteet</th>
+            </tr>
             </thead>
             <tbody>
-                {% for p in players %}
-                    <tr>
+            {% for p in players[:10] %}
+                <tr>
                     <td>{{ p.name }}</td>
-                    <td>{{ p.score }}</td>
-                    </tr>
-                {% endfor %}
+                    <td>
+                        {% if p.score >= 0 %}
+                            {{ p.score }}
+                        {% else %}
+                            Not ranked.
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
-            </table>
-        {% else %}
-            <p>No registered players.</p>
-        {% endif %}
-    </p>
+        </table>
+    {% else %}
+        <p>No registered players.</p>
+    {% endif %}
 {% endblock %}

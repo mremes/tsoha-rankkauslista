@@ -11,7 +11,10 @@ class Player(db.Model):
 
     @property
     def score(self):
-        return 0
+        session = db.session()
+        ranking = session.query(Ranking).filter_by(player_id=self.id).first()
+        if not ranking:
+            return -1
 
 
 class Association(db.Model):

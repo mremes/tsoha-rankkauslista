@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from application import app, db
 from application.rankings.models import Player
 
@@ -15,9 +15,28 @@ def register_page():
 
 @app.route("/register", methods=["POST"])
 def create_player():
-    p = Player(request.form.get('name'))
+    name = request.form.get('name')
+    if not name:
+        return render_template("register.html", fail_message="Name cannot be empty.")
 
+    session = db.session()
+    is_existing = session.query(Player).filter_by(name=name).first()
+
+    if is_existing:
+        return render_template("register.html", fail_message='Player %s already exists.' % name)
+
+    p = Player(name)
     db.session().add(p)
     db.session().commit()
 
-    return "Successfully added player " + p.name
+    return render_template("register.html", success_message="Successfully added player %s." % p.name)
+
+
+# todo: endpoint turnauslistan luomiseen
+
+@app.route("/create_list", methods=["GET"])
+def create_list_give_player_names():
+    # todo: filter players that are not in some other tournament
+    session = db.session()
+    players = [p.name for p in session.query(Player).all()]
+    return jsonify(players)
