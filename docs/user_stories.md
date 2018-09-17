@@ -1,6 +1,6 @@
 # User storyt
 
-User storyt on kategorisoitu pääasiallisesti entiteettityyppien mukaan. Entiteetit löydät [READMEsta](README.md).
+User storyt on kategorisoitu pääasiallisesti entiteettityyppien mukaan. Projektin entiteetit löydät [READMEsta](README.md#entiteetit).
 
 ## Lajiliitto
 Lajiliittona, haluan luoda ranking-listan, jolle rekisteröidyn pelaajan voi lisätä.
@@ -12,7 +12,7 @@ Lajiliittona, haluan tarkastella turnauksen järjestäjän syöttämiä turnaust
 ## Pelaaja
 Pelaajana, haluan lisätä itseni järjestelmään rekisteröitymisavainta käyttäen.
 
-Pelaajana, haluan tarkastella profiilitietojani; erityisesti, haluan nähdä reaaliaikaisen ranking-pistetilanteeni.
+Pelaajana, haluan tarkastella profiilitietojani; erityisesti, haluan nähdä reaaliaikaisen ranking-pistetilanteeni. Voin kuulua vain yhteen ranking-listaan.
 
 ## Turnaus
 Turnausjärjestäjänä, haluan syöttää turnaustiedot järjestelmään. Turnaustiedot sisältävät tietoja kuten:
@@ -28,7 +28,7 @@ Turnausjärjestäjänä, haluan päivittää turnauskaaviota ja saada järkeviä
 Turnausjärjestäjänä, haluan julistaa turnauksen lopetetuksi. Turnauksen loputtua, ranking-tilanteen on päivityttävä reaaliaikaisesti.
 
 ## Julkiset user storiet
-Ottelusta kiinnostuneena henkilönä, haluan nähdä turnauksen ottelun voittajan sekä mahdollisesti siitä saadut ranking-pisteet.
+Ottelusta kiinnostuneena henkilönä, haluan nähdä turnauksen ottelun voittajan sekä ottelusta jaetut mahdolliset ranking-pisteet.
 
 Ranking-listan selaajana, haluan nähdä vähintään top 10 ranking-listalla olevaa pelaajaa sekä heidän pistemääränsä.
 
