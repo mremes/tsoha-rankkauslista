@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% set player = data[0] %}
+
+{% block body %}
+    <form method="POST" action="{{ url_for('submit_edit_user_info', userid=player.id) }}">
+        {{ form.hidden_tag() }}
+        Nimi:<br>
+        <input type="text" name="name" title="name" value="{{ player.name }}">
+        <br><br>
+        <input type="submit" value="Vahvista muutokset">
+    </form>
+{% endblock %}

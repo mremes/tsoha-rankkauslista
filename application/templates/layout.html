@@ -20,12 +20,30 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ url_for('index') }}">Etusivu</a></li>
-            <li><a href="{{ url_for('register_page') }}">Rekisteröi pelaaja</a></li>
+            <li><a href="{{ url_for('register') }}">Rekisteröi käyttäjä</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('register_player') }}">Rekisteröi pelaaja</a></li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <li class="pull-right login-btn"><a href="{{ url_for('logout') }}">{{ current_user.username }} (kirjaudu
+                    ulos)</a></li>
+            {% else %}
+                <li class="pull-right login-btn"><a href="{{ url_for('login') }}">Kirjaudu sisään</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
 <div class="container">
     <div class="starter-template">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         {% block body %}
             <p>
                 Content.

@@ -5,11 +5,9 @@
     <form method="POST">
         {{ form.hidden_tag() }}
         <dl>
-            {{ render_field(form.name) }}
             {{ render_field(form.username) }}
             {{ render_field(form.password) }}
-            {{ render_field(form.confirm) }}
         </dl>
-        <input type="submit" value="Rekisteröidy">
+        <input type="submit" value="Kirjaudu sisään">
     </form>
 {% endblock %}

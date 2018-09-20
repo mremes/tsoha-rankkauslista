@@ -13,7 +13,7 @@
             <tbody>
             {% for p in players[:10] %}
                 <tr>
-                    <td>{{ p.name }}</td>
+                    <td><a href="{{ url_for("get_player_info", userid=p.id) }}">{{ p.name }}</a></td>
                     <td>
                         {% if p.score >= 0 %}
                             {{ p.score }}
