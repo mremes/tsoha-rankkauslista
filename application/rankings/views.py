@@ -31,8 +31,8 @@ def get_player_info(playerid):
         return redirect(utils.get_next_url())
 
 
-@login_required
 @app.route('/players/<playerid>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_player(playerid):
     player = Player.query.get(playerid)
 
@@ -54,8 +54,9 @@ def edit_player(playerid):
 
     return render_template('edit_player.html', form=form)
 
-@login_required
+
 @app.route('/players/<playerid>/retire', methods=['GET'])
+@login_required
 def retire_player(playerid):
     player_data = Player.query.get(playerid)
     if not player_data:
