@@ -3,8 +3,8 @@ from .models import User
 
 login_manager = flask_login.LoginManager()
 
-login_manager.login_view = "login"
-login_manager.login_message = "Kirjaudu sisään käyttääksesi tätä toiminnallisuutta."
+login_manager.login_view = 'login'
+login_manager.login_message = 'Kirjaudu sisään käyttääksesi tätä toiminnallisuutta.'
 
 
 @login_manager.user_loader

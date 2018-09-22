@@ -6,16 +6,16 @@ from application.extensions import csrf
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = os.urandom(32)
-app.config["WTF_CSRF_SECRET_KEY"] = os.urandom(32)
+app.config['SECRET_KEY'] = os.urandom(32)
+app.config['WTF_CSRF_SECRET_KEY'] = os.urandom(32)
 
 csrf.init_app(app)
 
-if os.environ.get("HEROKU"):
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+if os.environ.get('HEROKU'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///rankings.db"
-    app.config["SQLALCHEMY_ECHO"] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rankings.db'
+    app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
 

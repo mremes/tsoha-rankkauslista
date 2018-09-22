@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Tennis Grand Ranking</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' type='text/css' href='{{ url_for('static', filename='styles.css') }}'>
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <div class="navbar-brand" href="#"><img class="navbar-brand"
-                                                    src="https://findicons.com/files/icons/924/sportset/128/tennis_128x128.png"
-                                                    alt="Tennis Grand Ranking">
+<nav class='navbar navbar-default'>
+    <div class='container-fluid'>
+        <div class='navbar-header'>
+            <div class='navbar-brand' href='#'><img class='navbar-brand'
+                                                    src='https://findicons.com/files/icons/924/sportset/128/tennis_128x128.png'
+                                                    alt='Tennis Grand Ranking'>
                 <p>Tennis Grand Ranking</p></div>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('index') }}">Etusivu</a></li>
+        <ul class='nav navbar-nav'>
+            <li><a href='{{ url_for('index') }}'>Etusivu</a></li>
             {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('register_player') }}">Rekisteröi pelaaja</a></li>
+                <li><a href='{{ url_for('register_player') }}'>Rekisteröi pelaaja</a></li>
             {% endif %}
             {% if current_user.is_authenticated %}
-                <li class="pull-right login-btn"><a href="{{ url_for('logout') }}">{{ current_user.username }} (kirjaudu
+                <li class='pull-right login-btn'><a href='{{ url_for('logout') }}'>{{ current_user.username }} (kirjaudu
                     ulos)</a></li>
             {% else %}
-                <li class="pull-right register-btn"><a href="{{ url_for('register') }}">Rekisteröidy</a></li>
-                <li class="pull-right login-btn"><a href="{{ url_for('login') }}">Kirjaudu sisään</a></li>
+                <li class='pull-right register-btn'><a href='{{ url_for('register') }}'>Rekisteröidy</a></li>
+                <li class='pull-right login-btn'><a href='{{ url_for('login') }}'>Kirjaudu sisään</a></li>
             {% endif %}
         </ul>
     </div>
 </nav>
-<div class="container">
-    <div class="starter-template">
+<div class='container'>
+    <div class='starter-template'>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul class=flashes>

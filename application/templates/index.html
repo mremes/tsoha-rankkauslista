@@ -1,10 +1,10 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block body %}
     {% if players and players|length > 0 %}
         <h3>TGR-listan top 10 pelaajaa</h3>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+        <table class='table table-striped table-bordered'>
+            <thead class='thead-dark'>
             <tr>
                 <th>Nimi</th>
                 <th>TGR-pisteet</th>
@@ -13,7 +13,7 @@
             <tbody>
             {% for p in players[:10] %}
                 <tr>
-                    <td><a href="{{ url_for("get_player_info", playerid=p.id) }}">{{ p.name }}</a></td>
+                    <td><a href='{{ url_for('get_player_info', playerid=p.id) }}'>{{ p.name }}</a></td>
                     <td>
                         {% if p.score >= 0 %}
                             {{ p.score }}

@@ -8,7 +8,7 @@ from application.forms import PlayerForm
 import application.utils as utils
 
 
-@app.route("/register_player", methods=["GET", "POST"])
+@app.route('/register_player', methods=['GET', 'POST'])
 def register_player():
     form = PlayerForm(request.form)
     if form.validate_on_submit():
@@ -20,24 +20,24 @@ def register_player():
     return render_template('register_player.html', form=form)
 
 
-@app.route("/players/<int:playerid>")
+@app.route('/players/<int:playerid>')
 def get_player_info(playerid):
     player_data = Player.query.get(playerid)
 
     if player_data:
-        return render_template("player_info.html", data=[player_data])
+        return render_template('player_info.html', data=[player_data])
     else:
-        flash('Player with id %s does not exists.' % playerid)
+        flash('Pelaajaa tunnuksella %s ei ole olemassa.' % playerid)
         return redirect(utils.get_next_url())
 
 
 @login_required
-@app.route("/players/<playerid>/edit", methods=["GET", "POST"])
+@app.route('/players/<playerid>/edit', methods=['GET', 'POST'])
 def edit_player(playerid):
     player = Player.query.get(playerid)
 
     if not player:
-        flash("Player with id %s does not exist" % playerid)
+        flash('Pelaajaa tunnuksella %s ei ole olemassa.' % playerid)
         return redirect(utils.get_next_url())
 
     form = PlayerForm(player=player)
@@ -49,19 +49,19 @@ def edit_player(playerid):
         player.dateofbirth = form.dob.data
         player.placeofbirth = form.pob.data
         db.session.commit()
-        flash("Onnistuneesti muokattiin pelaajaa %s" % playerid)
-        return render_template("player_info.html", data=[player])
+        flash('Onnistuneesti muokattiin pelaajaa %s' % playerid)
+        return render_template('player_info.html', data=[player])
 
-    return render_template("edit_player.html", form=form)
+    return render_template('edit_player.html', form=form)
 
 @login_required
-@app.route("/players/<playerid>/retire", methods=["GET"])
+@app.route('/players/<playerid>/retire', methods=['GET'])
 def retire_player(playerid):
     player_data = Player.query.get(playerid)
     if not player_data:
-        flash("Player with id not found")
+        flash('Pelaajaa tunnuksella %s ei ole olemassa.')
         return redirect(utils.get_next_url())
     db.session().delete(player_data)
     db.session.commit()
-    flash("Player %s successfully retired" % player_data.name)
+    flash('Onnistuneesti poistettiin pelaaja %s.' % player_data.name)
     return redirect(url_for('index'))

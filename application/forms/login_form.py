@@ -14,7 +14,7 @@ class LoginForm(Form):
     def validate(self):
         rv = Form.validate(self)
         if not rv:
-           return False
+            return False
 
         user = User.query.filter_by(
             username=self.username.data).first()
