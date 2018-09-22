@@ -2,7 +2,7 @@
 
 {% block body %}
     {% if players and players|length > 0 %}
-        <h3>TGR-listan top 10 pelaajaa</h3>
+        <h3>TGR-listan pelaajat</h3>
         <table class='table table-striped table-bordered'>
             <thead class='thead-dark'>
             <tr>
@@ -18,7 +18,7 @@
                         {% if p.score >= 0 %}
                             {{ p.score }}
                         {% else %}
-                            Ei listalla.
+                            Ei pisteitä.
                         {% endif %}
                     </td>
                 </tr>
@@ -26,6 +26,6 @@
             </tbody>
         </table>
     {% else %}
-        <p>Ei rekisteröityneitä pelaajia.</p>
+        <p>Ei rekisteröityneitä pelaajia. <a href="{{ url_for('register_player') }}">Lisää pelaaja!</a></p>
     {% endif %}
 {% endblock %}
