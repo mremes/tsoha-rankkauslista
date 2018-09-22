@@ -1,10 +1,10 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block body %}
     {% if players and players|length > 0 %}
-        <h3>TGR-listan top 10 pelaajaa</h3>
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+        <h3>TGR-listan pelaajat</h3>
+        <table class='table table-striped table-bordered'>
+            <thead class='thead-dark'>
             <tr>
                 <th>Nimi</th>
                 <th>TGR-pisteet</th>
@@ -13,12 +13,12 @@
             <tbody>
             {% for p in players[:10] %}
                 <tr>
-                    <td>{{ p.name }}</td>
+                    <td><a href='{{ url_for('get_player_info', playerid=p.id) }}'>{{ p.name }}</a></td>
                     <td>
                         {% if p.score >= 0 %}
                             {{ p.score }}
                         {% else %}
-                            Not ranked.
+                            Ei pisteitä.
                         {% endif %}
                     </td>
                 </tr>
@@ -26,6 +26,6 @@
             </tbody>
         </table>
     {% else %}
-        <p>No registered players.</p>
+        <p>Ei rekisteröityneitä pelaajia. <a href="{{ url_for('register_player') }}">Lisää pelaaja!</a></p>
     {% endif %}
 {% endblock %}

@@ -1,3 +1,15 @@
+.navbar .login-btn {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+}
+
+.navbar .register-btn {
+  position: absolute;
+  top: 0px;
+  right: 130px;
+}
+
 .navbar-brand {
     padding: 0px;
 }
@@ -12,4 +24,8 @@
 .navbar-brand > p {
     padding-top: 5px;
     font-size: 18px;
+}
+
+.right-side-button{
+  float:right;
 }

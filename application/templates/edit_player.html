@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% from '_formhelpers.html' import render_field %}
+
+{% block body %}
+    <form method='POST' action='{{ url_for('edit_player', playerid=form.player.id) }}'>
+        {{ form.hidden_tag() }}
+        <dl>
+            {{ render_field(form.name) }}
+            {{ render_field(form.gender) }}
+            {{ render_field(form.dob) }}
+            {{ render_field(form.pob) }}
+        </dl>
+        <input type='submit' value='Vahvista muutokset'>
+    </form>
+{% endblock %}

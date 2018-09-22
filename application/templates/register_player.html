@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% from '_formhelpers.html' import render_field, render_radiofield %}
+
+{% block body %}
+    <form method='POST'>
+        {{ form.hidden_tag() }}
+        <dl>
+            {{ render_field(form.name) }}
+            {{ render_radiofield(form.gender) }}
+            {{ render_field(form.dob) }}
+            {{ render_field(form.pob) }}
+        </dl>
+        <input type='submit' value='Rekisteröi pelaaja'>
+    </form>
+{% endblock %}

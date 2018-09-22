@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% if data %}
+        {% set player = data[0] %}
+        <b>Pelaaja #{{ player.id }} </b>
+        <p> Nimi: {{ player.name }}<br>
+            Sukupuoli: {{ player.gender }}<br>
+            Syntymäpäivä: {{ player.dateofbirth.strftime('%d.%m.%Y') }}<br>
+            Syntymäpaikka: {{ player.placeofbirth }}<br>
+            Rekisteröitynyt: {{ player.registered_dt.strftime('%d.%m.%Y %H:%M:%S UTC') }}<br>
+        </p>
+        {% if current_user.is_authenticated %}
+            <form action='{{ url_for('edit_player', playerid=player.id) }}'>
+                <input type='submit' value='Muokkaa pelaajaa'/>
+            </form>
+            <form action='{{ url_for('retire_player', playerid=player.id) }}'>
+                <input type='submit' value='Poista pelaaja'/>
+            </form>
+        {% endif %}
+    {% elif fail_message %}
+        {{ fail_message }}
+    {% endif %}
+{% endblock %}
