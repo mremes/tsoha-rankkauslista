@@ -20,7 +20,6 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ url_for('index') }}">Etusivu</a></li>
-            <li><a href="{{ url_for('register') }}">Rekisteröi käyttäjä</a></li>
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('register_player') }}">Rekisteröi pelaaja</a></li>
             {% endif %}
@@ -28,6 +27,7 @@
                 <li class="pull-right login-btn"><a href="{{ url_for('logout') }}">{{ current_user.username }} (kirjaudu
                     ulos)</a></li>
             {% else %}
+                <li class="pull-right register-btn"><a href="{{ url_for('register') }}">Rekisteröidy</a></li>
                 <li class="pull-right login-btn"><a href="{{ url_for('login') }}">Kirjaudu sisään</a></li>
             {% endif %}
         </ul>

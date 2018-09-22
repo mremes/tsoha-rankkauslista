@@ -13,12 +13,12 @@
             <tbody>
             {% for p in players[:10] %}
                 <tr>
-                    <td><a href="{{ url_for("get_player_info", userid=p.id) }}">{{ p.name }}</a></td>
+                    <td><a href="{{ url_for("get_player_info", playerid=p.id) }}">{{ p.name }}</a></td>
                     <td>
                         {% if p.score >= 0 %}
                             {{ p.score }}
                         {% else %}
-                            Not ranked.
+                            Ei listalla.
                         {% endif %}
                     </td>
                 </tr>
@@ -26,6 +26,6 @@
             </tbody>
         </table>
     {% else %}
-        <p>No registered players.</p>
+        <p>Ei rekisteröityneitä pelaajia.</p>
     {% endif %}
 {% endblock %}

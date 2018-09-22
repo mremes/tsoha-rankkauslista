@@ -4,6 +4,12 @@
   right: 20px;
 }
 
+.navbar .register-btn {
+  position: absolute;
+  top: 0px;
+  right: 130px;
+}
+
 .navbar-brand {
     padding: 0px;
 }
