@@ -4,8 +4,8 @@ from . import User
 
 
 class LoginForm(Form):
-    username = StringField('Käyttäjätunnus', [validators.DataRequired(), validators.Length(min=6)])
-    password = PasswordField('Salasana', [validators.DataRequired(), validators.Length(min=6)])
+    username = StringField('Käyttäjätunnus', [validators.DataRequired()])
+    password = PasswordField('Salasana', [validators.DataRequired()])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
