@@ -1,5 +1,8 @@
 # Tennis Grand Ranking
 * [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/)
+    - testitunnukset:
+        - käyttäjätunnus: testaaja
+        - salasana: testaaja
 * [User storiet](/docs/user_stories.md)
 * [Tietokantakaavio](/docs/images/ermodel.jpg)
 
