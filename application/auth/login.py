@@ -1,13 +1,15 @@
 import flask_login
 from .models import User
-from application import db
 
 login_manager = flask_login.LoginManager()
+
+login_manager.login_view = "login"
+login_manager.login_message = "Kirjaudu sisään käyttääksesi tätä toiminnallisuutta."
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db.session().query(User).filter_by(id=user_id).first()
+    return User.query.get(user_id)
 
 
 def login_user(*args, **kwargs):
