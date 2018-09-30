@@ -17,6 +17,9 @@
             <form action='{{ url_for('retire_player', playerid=player.id) }}'>
                 <input type='submit' value='Poista pelaaja'/>
             </form>
+            <form action='{{ url_for('add_to_ranking_list', playerid=player.id) }}'>
+                <input type='submit' value='Lisää listalle'/>
+            </form>
         {% endif %}
     {% elif fail_message %}
         {{ fail_message }}
