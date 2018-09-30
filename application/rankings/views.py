@@ -110,18 +110,18 @@ def get_list_info(ranking_list_id):
         return redirect(utils.get_next_url())
 
     qry = """
-    select player_id, timestamp ts, score
+    select player_id, ts, score
     from
     (
-    select a.ranking_id ranking_id, a.timestamp timestamp, a.score score
+    select a.ranking_id ranking_id, a.timestamp ts, a.score score
     from rankingrecord a
     inner join
     (
-    select id, max(timestamp) timestamp
+    select id, max(timestamp) ts
     from rankingrecord
     group by id
     ) b
-    on a.id = b.id and a.timestamp = b.timestamp
+    on a.id = b.id and a.timestamp = b.ts
     ) a
     inner join
     (
