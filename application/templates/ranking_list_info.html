@@ -5,8 +5,8 @@
         {% set ranking_list = data[0] %}
         <h3>{{ ranking_list.name }} (#{{ ranking_list.id }})</h3>
         <p> Sukupuoli: {{ ranking_list.genders|join(', ') }}<br>
-            Yläikäraja: {{ ranking_list.age_cap_hi }}<br>
             Alaikäraja: {{ ranking_list.age_cap_lo }}<br>
+            Yläikäraja: {{ ranking_list.age_cap_hi }}<br>
         </p>
         <h3>Pelaajat</h3>
         <table class='table table-striped table-bordered'>
