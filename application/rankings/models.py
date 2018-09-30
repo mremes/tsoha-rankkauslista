@@ -1,5 +1,7 @@
 from application import db
 from datetime import datetime
+from typing import List
+from sqlalchemy_utils.types.scalar_list import ScalarListType
 
 
 class Player(db.Model):
@@ -18,13 +20,12 @@ class Player(db.Model):
         self.gender = gender
         self.dateofbirth = dateofbirth
         self.placeofbirth = placeofbirth
+        self.score = None
+        self.score_ts = None
 
-    @property
-    def score(self):
-        session = db.session()
-        ranking = session.query(Ranking).filter_by(player_id=self.id).first()
-        if not ranking:
-            return -1
+    @staticmethod
+    def get_genders():
+        return {'mies', 'nainen', 'muu'}
 
 
 class Association(db.Model):
@@ -36,10 +37,17 @@ class RankingList(db.Model):
     __tablename__ = 'rankinglist'
 
     id = db.Column(db.Integer, primary_key=True)
-    assoc_id = db.Column(db.Integer, db.ForeignKey('association.id'))
+    name = db.Column(db.String)
+    genders = db.Column(ScalarListType(str))
+    age_cap_hi = db.Column(db.Integer)
+    age_cap_lo = db.Column(db.Integer)
 
-    def __init__(self, assoc: Association):
-        self.assoc_id = assoc.id
+    def __init__(self, name: str, genders: List[str], ach: int, acl: int):
+        # noinspection PyTypeChecker
+        self.name = name
+        self.genders = genders
+        self.age_cap_hi = ach
+        self.age_cap_lo = acl
 
 
 class Ranking(db.Model):
@@ -64,3 +72,4 @@ class RankingRecord(db.Model):
 
     def __init__(self, ranking: Ranking):
         self.ranking_id = ranking.id
+        self.score = 0

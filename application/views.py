@@ -1,12 +1,19 @@
 from flask import render_template, jsonify
 from application import app, db
 from application.auth.models import User
-from application.rankings.models import Player
+from application.rankings.models import Player, RankingList, Ranking
 
 
 @app.route('/')
 def index():
-    return render_template('index.html', players=Player.query.all())
+    lists = RankingList.query.all()
+    query="""
+    SELECT list_id, COUNT(DISTINCT player_id) FROM Ranking
+    GROUP BY list_id
+    """
+    results = db.engine.execute(query)
+    num_players = {r[0]: r[1] for r in results}
+    return render_template('index.html', players=Player.query.all(), rankings=lists, num_players=num_players)
 
 # todo: endpoint turnauslistan luomiseen
 

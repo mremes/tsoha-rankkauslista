@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% if data %}
+        {% set ranking_list = data[0] %}
+        <h3>{{ ranking_list.name }} (#{{ ranking_list.id }})</h3>
+        <p> Sukupuoli: {{ ranking_list.genders|join(', ') }}<br>
+            Alaikäraja: {{ ranking_list.age_cap_lo }}<br>
+            Yläikäraja: {{ ranking_list.age_cap_hi }}<br>
+        </p>
+        <h3>Pelaajat</h3>
+        <table class='table table-striped table-bordered'>
+            <thead class='thead-dark'>
+            <tr>
+                <th>Nimi</th>
+                <th>Pisteet</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if players %}
+                {% for p in players %}
+                    <tr>
+                        <td><a href='{{ url_for('get_player_info', playerid=p.id) }}'>{{ p.name }}</a></td>
+                        <td>
+                            {% if p.score or p.score >= 0 %}
+                                {{ p.score }}
+                            {% else %}
+                                Ei pisteitä.
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    {% elif fail_message %}
+        {{ fail_message }}
+    {% endif %}
+{% endblock %}
