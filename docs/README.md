@@ -1,4 +1,6 @@
 # Tennis Grand Ranking
+Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovellus -kurssin](https://courses.helsinki.fi/fi/tkt20011/124960890) suorittamiseksi. Tavoitteena on luoda Python-backendia – erityisesti Flask-kirjastoa – käyttävä verkkosovellus.
+
 * [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/)
     - testitunnukset:
         - käyttäjätunnus: testaaja
@@ -6,7 +8,15 @@
 * [User storiet](/docs/user_stories.md)
 * [Tietokantakaavio](/docs/images/ermodel.jpg)
 
-Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovellus -kurssin](https://courses.helsinki.fi/fi/tkt20011/124960890) suorittamiseksi. Tavoitteena on luoda Python-backendia – erityisesti Flask-kirjastoa – käyttävä verkkosovellus.
+## Huomioita viikon 4 etapeista
+* Monimutkaisia yhteenvetokyselyitä
+    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L112-L133](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L112-L133)
+    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L82-L86](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L82-L86)
+    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/views.py#L10-L13](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/views.py#L10-L13)
+* Uusia tietokantatauluja otettu käyttöön: Ranking, RankingList, RankingRecord
+    - nyt projektissa on yhteensä 5 aktiivista tietokantataulua
+* Bootstrap on ollut käytössä alkaen viikosta 1
+* Ranking-listojen luomisen ja pelaajien lisäämisen niihin mahdollistava toiminnallisuus lisättiin tällä viikolla
 
 ## Aiheen kuvaus
 Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkaukseen tarkoitettu verkkojärjestelmä. Ajatuksena on toteuttaa turnauksille soveltuva rankkausmenetelmä sekä tarvittavat web-pohjaiset tietojensyöttö- ja esitystoiminnot.
