@@ -34,7 +34,7 @@
                 <tr>
                     <td><a href='{{ url_for('get_player_info', playerid=p.id) }}'>{{ p.name }}</a></td>
                     <td>
-                        {% if p.score and p.score >= 0 %}
+                        {% if p.score or p.score >= 0 %}
                             {{ p.score }}
                         {% else %}
                             N/A
