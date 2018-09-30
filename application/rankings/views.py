@@ -80,7 +80,7 @@ def add_to_ranking_list(playerid):
     player = Player.query.get(playerid)
     query = """
     SELECT * FROM RankingList
-    WHERE genders LIKE '%{gender}%'
+    WHERE genders LIKE '%%{gender}%%'
     AND {age} BETWEEN age_cap_lo AND age_cap_hi
     """.format(gender=player.gender,
                age=dt.datetime.now().year - player.dateofbirth.year)
