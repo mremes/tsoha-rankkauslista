@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% if data %}
+        {% set player = data[0] %}
+        {% if lists %}
+            <b>{{ player.name }} voi liittyä seuraaville listoille:</b>
+            <table class='table table-striped table-bordered'>
+                {% for list in lists %}
+                    {% set url = url_for('add_to_ranking_list', playerid=player.id, listid=list.id) %}
+                    <tr>
+                        <td>{{ list.name }}</td>
+                        <td>
+                            <a href="{{ url }}">Lisää</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            Pelaajalle ei ole sopivia listoja. Ota yhteyttä liittoon.
+        {% endif %}
+    {% elif fail_message %}
+        {{ fail_message }}
+    {% endif %}
+{% endblock %}
