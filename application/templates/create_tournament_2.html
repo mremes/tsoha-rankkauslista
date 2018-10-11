@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% from '_formhelpers.html' import render_field %}
+
+{% block body %}
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ data.progress }}%"
+             aria-valuenow="{{ data.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    {{ data.status_text }}<br><br>
+    <form method='POST' action='{{ url_for('select_num_players_for_tournament', tournament_id=tournament_id) }}'>
+        {{ form.hidden_tag() }}
+        <dl>
+            {{ render_field(form.tournament_id) }}
+            {{ render_field(form.num_players) }}
+        </dl>
+        <input type='submit' value='Seuraava'>
+    </form>
+{% endblock %}

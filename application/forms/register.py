@@ -5,8 +5,10 @@ from . import User
 
 class RegisterForm(Form):
     name = StringField('Nimi', [validators.DataRequired()])
-    username = StringField('Käyttäjätunnus', [validators.DataRequired(), validators.Length(min=6)])
-    password = PasswordField('Salasana', [validators.Length(min=6), validators.EqualTo('confirm', message='Salasanojen pitää olla samat')])
+    username = StringField(
+        'Käyttäjätunnus', [validators.DataRequired(), validators.Length(min=6)])
+    password = PasswordField('Salasana', [validators.Length(
+        min=6), validators.EqualTo('confirm', message='Salasanojen pitää olla samat')])
     confirm = PasswordField('Salasana uudelleen', [validators.DataRequired()])
 
     def __init__(self, *args, **kwargs):
