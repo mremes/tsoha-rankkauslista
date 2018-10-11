@@ -3,7 +3,8 @@ from wtforms import StringField, validators, RadioField, IntegerField
 
 
 class RankingListForm(Form):
-    name = StringField('Nimi', [validators.DataRequired(), validators.Length(min=6)])
+    name = StringField(
+        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
     gender_filter = RadioField('Sukupuoli', choices=[('mies', 'mies'),
                                                      ('nainen', 'nainen'),
                                                      ('mikä tahansa', 'mikä tahansa')])

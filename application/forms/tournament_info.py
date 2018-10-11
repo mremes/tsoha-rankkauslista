@@ -4,8 +4,10 @@ from wtforms import StringField, validators, SelectField, DateField
 
 
 class TournamentInfoForm(Form):
-    name = StringField('Nimi', [validators.DataRequired(), validators.Length(min=6)])
-    venue = StringField('Paikka', [validators.DataRequired(), validators.Length(min=6)])
+    name = StringField(
+        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
+    venue = StringField(
+        'Paikka', [validators.DataRequired(), validators.Length(min=6)])
     date = DateField('Aika (pp.kk.vvvv)', format="%d.%m.%Y")
     ranking_list = SelectField('Ranking-lista', choices=[])
 

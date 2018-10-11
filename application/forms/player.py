@@ -4,8 +4,10 @@ from . import Player
 
 
 class PlayerForm(Form):
-    name = StringField('Nimi', [validators.DataRequired(), validators.Length(min=6)])
-    gender = RadioField('Sukupuoli', [validators.DataRequired()], choices=[('mies', 'mies'), ('nainen', 'nainen'), ('muu', 'muu')])
+    name = StringField(
+        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
+    gender = RadioField('Sukupuoli', [validators.DataRequired()], choices=[
+                        ('mies', 'mies'), ('nainen', 'nainen'), ('muu', 'muu')])
     dob = DateField('Syntymäaika (pp.kk.vvvv)', format="%d.%m.%Y")
     pob = StringField('Syntymäpaikka', [validators.DataRequired()])
 

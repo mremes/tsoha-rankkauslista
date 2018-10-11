@@ -12,7 +12,8 @@ import application.utils as utils
 def register_player():
     form = PlayerForm(request.form)
     if form.validate_on_submit():
-        player = Player(form.name.data, form.gender.data, form.dob.data, form.pob.data)
+        player = Player(form.name.data, form.gender.data,
+                        form.dob.data, form.pob.data)
         db.session().add(player)
         db.session().commit()
         flash(u'Onnistuneesti lisätty pelaaja: %s' % player.name)
@@ -147,7 +148,8 @@ def create_tournament():
         return redirect(url_for('select_num_players_for_tournament',
                                 tournament_id=tournament.id))
 
-    rlist_choices = [(rlist.id, rlist.name) for rlist in RankingList.query.all()]
+    rlist_choices = [(rlist.id, rlist.name)
+                     for rlist in RankingList.query.all()]
     form.ranking_list.choices = rlist_choices
     form.process()
 

@@ -95,6 +95,7 @@ class RankingList(db.Model):
                    age=datetime.now().year - player.dateofbirth.year)
         return RankingList.query.instances(db.engine.execute(query))
 
+
 class Ranking(db.Model):
     __tablename__ = 'Ranking'
 
@@ -127,7 +128,8 @@ class Tournament(db.Model):
     name = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     venue = db.Column(db.String, nullable=False)
-    ranking_list_id = db.Column(db.Integer, db.ForeignKey('RankingList.id'), nullable=False)
+    ranking_list_id = db.Column(
+        db.Integer, db.ForeignKey('RankingList.id'), nullable=False)
 
     # transient
     num_players = None
