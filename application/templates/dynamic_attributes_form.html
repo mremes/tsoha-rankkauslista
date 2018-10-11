@@ -11,7 +11,7 @@
         {{ form.hidden_tag() }}
         <dl>
             {% for attr in form.dyn_attrs %}
-                {{  render_field(form[attr]) }}
+                {{ render_field(form[attr]) }}
             {% endfor %}
         </dl>
         <input type='submit' value='Seuraava'>
