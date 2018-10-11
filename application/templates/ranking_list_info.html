@@ -17,8 +17,8 @@
             </tr>
             </thead>
             <tbody>
-            {% if players %}
-                {% for p in players %}
+            {% if ranking_list.players %}
+                {% for p in ranking_list.players %}
                     <tr>
                         <td><a href='{{ url_for('get_player_info', playerid=p.id) }}'>{{ p.name }}</a></td>
                         <td>

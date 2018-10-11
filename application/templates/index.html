@@ -14,7 +14,7 @@
             {% for r in rankings %}
                 <tr>
                     <td><a href='{{ url_for('get_list_info', ranking_list_id=r.id) }}'>{{ r.name }}</a></td>
-                    <td>{{ num_players[r.id] }}</td>
+                    <td>{{ r.players|length }}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -38,7 +38,32 @@
             {% endfor %}
             </tbody>
         </table>
-    {% else %}
+    {% elif current_user.is_authenticated %}
         <p>Ei rekisteröityneitä pelaajia. <a href="{{ url_for('register_player') }}">Lisää pelaaja!</a></p>
+    {% else %}
+        <p>Kirjaudu sisään käyttääkseksi järjestelmää.</p>
+    {% endif %}
+    {% if tournaments and tournaments|length > 0 %}
+        <h3>Turnaukset</h3>
+        <table class='table table-striped table-bordered'>
+            <thead class='thead-dark'>
+            <tr>
+                <th>Nimi</th>
+                <th>Paikka</th>
+                <th>Ajankohta</th>
+                <th>Pelaajia</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for t in tournaments %}
+                <tr>
+                    <td><a href='{{ url_for('index') }}'>{{ t.name }}</a></td>
+                    <td>{{ t.venue }}</td>
+                    <td>{{ t.date }}</td>
+                    <td>{{ t.num_players }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 {% endblock %}

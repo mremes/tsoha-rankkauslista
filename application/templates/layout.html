@@ -23,6 +23,7 @@
             {% if current_user.is_authenticated %}
                 <li><a href='{{ url_for('register_player') }}'>Rekisteröi pelaaja</a></li>
                 <li><a href='{{ url_for('create_ranking_list') }}'>Luo ranking-lista</a></li>
+                <li><a href='{{ url_for('create_tournament') }}'>Luo turnaus</a></li>
             {% endif %}
             {% if current_user.is_authenticated %}
                 <li class='pull-right login-btn'><a href='{{ url_for('logout') }}'>{{ current_user.username }} (kirjaudu

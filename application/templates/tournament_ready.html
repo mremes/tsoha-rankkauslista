@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ data.progress }}%"
+             aria-valuenow="{{ data.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    Valmis! <a href="{{ url_for('index') }}">Siirry etusivulle.</a>
+{% endblock %}
