@@ -19,3 +19,12 @@ class RankingListForm(Form):
         if not rv:
             return False
         return True
+
+    @property
+    def genders(self):
+        if self.gender_filter.data == 'mies':
+            return ['mies']
+        elif self.gender_filter.data == 'nainen':
+            return ['nainen']
+        elif self.gender_filter.data == 'mikä tahansa':
+            return ['mies', 'nainen', 'muu']
