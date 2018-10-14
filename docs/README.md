@@ -18,6 +18,26 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
 * Bootstrap on ollut käytössä alkaen viikosta 1
 * Ranking-listojen luomisen ja pelaajien lisäämisen niihin mahdollistava toiminnallisuus lisättiin tällä viikolla
 
+## Asennusohje
+Voit asentaa tämän sovelluksen omalle koneellesi. Oletetaan, että sinulla on käytössäsi Pythonista versio 3.6.6 tai uudempi.
+
+Aja seuraavat komennot hakemiston juuresta.
+
+1. Asenna riippuudet
+```
+pip install -r requirements.txt
+```
+
+### Käyttöohje
+
+1. Aja sovellus (hakemiston juuresta)
+```
+python run.py
+```
+
+2. Käytä sovellusta Internet-selaimella osoitteessa [http://localhost:5000](http://localhost:5000)
+
+
 ## Aiheen kuvaus
 Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkaukseen tarkoitettu verkkojärjestelmä. Ajatuksena on toteuttaa turnauksille soveltuva rankkausmenetelmä sekä tarvittavat web-pohjaiset tietojensyöttö- ja esitystoiminnot.
 
