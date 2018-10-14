@@ -1,15 +1,18 @@
 from flask_wtf import Form
 from wtforms import StringField, validators, DateField, RadioField
-from . import Player
+from application.rankings.models import Player
 
 
 class PlayerForm(Form):
     name = StringField(
-        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
-    gender = RadioField('Sukupuoli', [validators.DataRequired()], choices=[
-                        ('mies', 'mies'), ('nainen', 'nainen'), ('muu', 'muu')])
-    dob = DateField('Syntymäaika (pp.kk.vvvv)', format="%d.%m.%Y")
-    pob = StringField('Syntymäpaikka', [validators.DataRequired()])
+        'Nimi', [validators.DataRequired(),
+                 validators.Length(min=2, max=60, message="Nimi on vähintään 6 ja enintään 60 merkkiä pitkä.")])
+    gender = RadioField('Sukupuoli', [validators.DataRequired(message="Valitse sukupuoli")], choices=[
+        ('mies', 'mies'), ('nainen', 'nainen'), ('muu', 'muu')])
+    dob = DateField('Syntymäaika (pp.kk.vvvv)', format="%d.%m.%Y",
+                    validators=[validators.DataRequired("Syötä syntymäaika")])
+    pob = StringField('Syntymäpaikka', [validators.DataRequired("Syötä syntymäaika"),
+                                        validators.Length(min=2, max=70, message="Enintään 70 merkkiä.")])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)

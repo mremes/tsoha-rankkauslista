@@ -3,16 +3,16 @@
 User storyt on kategorisoitu pääasiallisesti entiteettityyppien mukaan. Projektin entiteetit löydät [READMEsta](README.md#entiteetit).
 
 ## Lajiliitto
-Lajiliittona, haluan luoda ranking-listan, jolle rekisteröidyn pelaajan voi lisätä.
+Lajiliittona, haluan luoda ranking-listan, jolle rekisteröidyn pelaaja voi lisätä itsensä.
 
 Lajiliittona, haluan tarjota turnauksen järjestäjälle listan käytettävissä olevista pelaajista turnauskaavion luomisen tueksi.
 
 Lajiliittona, haluan tarkastella turnauksen järjestäjän syöttämiä turnaustuloksia ja antaa turnauksen vaiheille painoarvoja ranking-pisteiden laskemiseksi.
 
 ## Pelaaja
-Pelaajana, haluan lisätä itseni järjestelmään rekisteröitymisavainta käyttäen.
+Pelaajana, haluan lisätä itseni järjestelmään.
 
-Pelaajana, haluan tarkastella profiilitietojani; erityisesti, haluan nähdä reaaliaikaisen ranking-pistetilanteeni. Voin kuulua vain yhteen ranking-listaan.
+Pelaajana, haluan tarkastella profiilitietojani; erityisesti, haluan nähdä reaaliaikaisen ranking-pistetilanteeni. Voin kuulua moneen ranking listaan.
 
 ## Turnaus
 Turnausjärjestäjänä, haluan syöttää turnaustiedot järjestelmään. Turnaustiedot sisältävät tietoja kuten:
@@ -23,9 +23,9 @@ Turnausjärjestäjänä, haluan syöttää turnaustiedot järjestelmään. Turna
 
 Haluan, että voin asetella pelaajat turnauskaavioon joko itse tai käyttäen järjestelmän tarjoamaan turnauskaaviogeneraattoria.
 
-Turnausjärjestäjänä, haluan päivittää turnauskaaviota ja saada järkeviä virheilmoituksia jos syötteeni on väärin.
+Turnausjärjestäjänä, haluan saada järkeviä virheilmoituksia jos syötteeni on väärin.
 
-Turnausjärjestäjänä, haluan julistaa turnauksen lopetetuksi. Turnauksen loputtua, ranking-tilanteen on päivityttävä reaaliaikaisesti.
+Turnausjärjestäjänä, haluan julistaa turnauksen lopetetuksi ja syöttää sijoitustiedot. Turnauksen loputtua, ranking-tilanteen on päivityttävä reaaliaikaisesti sen jälkeen kun lajiliitto on määritellyt pistejakauman.
 
 ## Julkiset user storiet
 Ottelusta kiinnostuneena henkilönä, haluan nähdä turnauksen ottelun voittajan sekä ottelusta jaetut mahdolliset ranking-pisteet.

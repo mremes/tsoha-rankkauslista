@@ -1,14 +1,15 @@
 from flask import flash, redirect, url_for, render_template, request
-from flask_login import login_required
 from application import app, db
 from application.rankings.models import Player, RankingList, Ranking, \
-    RankingRecord, Tournament
+    RankingRecord, Tournament, TournamentPlayer
 from application.forms import PlayerForm, RankingListForm, TournamentInfoForm, \
     TournamentPlayersForm, TournamentLayoutForm, TournamentPrizesForm
 import application.utils as utils
+from application import login_required
 
 
 @app.route('/register_player', methods=['GET', 'POST'])
+@login_required(["PLAYER", "ADMIN"])
 def register_player():
     form = PlayerForm(request.form)
     if form.validate_on_submit():
@@ -33,7 +34,7 @@ def get_player_info(playerid):
 
 
 @app.route('/players/<playerid>/edit', methods=['GET', 'POST'])
-@login_required
+@login_required(["PLAYER", "ADMIN"])
 def edit_player(playerid):
     player = Player.query.get(playerid)
 
@@ -57,7 +58,7 @@ def edit_player(playerid):
 
 
 @app.route('/players/<playerid>/add_to_list', methods=['GET'])
-# @login_required
+@login_required(["PLAYER", "ADMIN"])
 def add_to_ranking_list(playerid):
     listid = request.args.get('listid')
     player = Player.query.get(playerid)
@@ -89,7 +90,7 @@ def add_to_ranking_list(playerid):
 
 
 @app.route('/players/<playerid>/retire', methods=['GET'])
-@login_required
+@login_required(["PLAYER", "ADMIN"])
 def retire_player(playerid):
     player_data = Player.query.get(playerid)
 
@@ -117,7 +118,7 @@ def get_list_info(ranking_list_id):
 
 
 @app.route('/create_ranking_list', methods=['GET', 'POST'])
-@login_required
+@login_required(["ADMIN"])
 def create_ranking_list():
     form = RankingListForm(request.form)
 
@@ -135,6 +136,7 @@ def create_ranking_list():
 
 
 @app.route('/tournament/create', methods=['GET', 'POST'])
+@login_required(["TOURNAMENT", "ADMIN"])
 def create_tournament():
     data = {'progress': 0,
             'status_text': 'Vaihe 1: Anna turnauksen perustiedot'}
@@ -157,6 +159,7 @@ def create_tournament():
 
 
 @app.route('/tournament/create/players', methods=['GET', 'POST'])
+@login_required(["TOURNAMENT", "ADMIN"])
 def select_num_players_for_tournament():
     tournament_id = request.args.get('tournament_id')
     data = {'progress': 25,
@@ -182,6 +185,7 @@ def select_num_players_for_tournament():
 
 
 @app.route('/tournament/create/set_players', methods=['GET', 'POST'])
+@login_required(["TOURNAMENT", "ADMIN"])
 def set_players_for_tournament():
     tournament_id = request.args.get('tournament_id')
     tournament = Tournament.query.get(tournament_id)
@@ -211,6 +215,7 @@ def set_players_for_tournament():
 
 
 @app.route('/tournament/create/set_prizes', methods=['GET', 'POST'])
+@login_required(["TOURNAMENT", "ADMIN"])
 def set_prizes_for_tournament():
     data = {'progress': 75,
             'post_url': 'set_prizes_for_tournament',
@@ -224,7 +229,7 @@ def set_prizes_for_tournament():
 
     form = TournamentPrizesForm()
     if not form.validate_on_submit():
-        num_players = tournament.get_num_players()
+        num_players = TournamentPlayer.get_num_players_in_tournament(tournament)
         for i in range(20):
             print(num_players)
         TournamentPrizesForm.update_form_fields(num_players)
@@ -241,6 +246,7 @@ def set_prizes_for_tournament():
 
 
 @app.route('/tournament/create/ready', methods=['GET'])
+@login_required(["TOURNAMENT", "ADMIN"])
 def tournament_ready():
     tournament_id = request.args.get('tournament_id')
     data = {'progress': 100}

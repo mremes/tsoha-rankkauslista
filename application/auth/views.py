@@ -1,6 +1,6 @@
 from flask import flash, redirect, url_for, render_template, request, abort
 from application import app, db
-from application.auth.models import User
+from application.auth.models.user import User
 from application.forms import LoginForm, RegisterForm
 import application.utils as utils
 import application.auth.login as app_login
@@ -10,7 +10,7 @@ import application.auth.login as app_login
 def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        user = User(form.name.data, form.username.data, form.password.data)
+        user = User(form.name.data, form.username.data, form.role.data, form.password.data)
         db.session().add(user)
         db.session().commit()
         flash(u'Onnistuneesti rekisteröitynyt käyttäjä: %s' % user.username)

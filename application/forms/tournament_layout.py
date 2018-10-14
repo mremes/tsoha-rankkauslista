@@ -1,6 +1,6 @@
 from flask_wtf import Form
-from . import RankingList, Tournament, TournamentPlayer, Player, Match
-from . import db
+from application.rankings.models import RankingList, Tournament, TournamentPlayer, Player, Match
+from application import db
 from wtforms import SelectField
 
 

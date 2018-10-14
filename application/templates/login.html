@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% from '_formhelpers.html' import render_field %}
+{% from '_formhelpers.html' import render_field, submit_button %}
 
 {% block body %}
     <form method='POST'>
@@ -8,6 +8,6 @@
             {{ render_field(form.username) }}
             {{ render_field(form.password) }}
         </dl>
-        <input type='submit' value='Kirjaudu sisään'>
+        {{ submit_button('Kirjaudu sisään') }}
     </form>
 {% endblock %}
