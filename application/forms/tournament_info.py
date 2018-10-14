@@ -1,15 +1,15 @@
 from flask_wtf import Form
-from . import RankingList, Tournament
+from application.rankings.models import RankingList, Tournament
 from wtforms import StringField, validators, SelectField, DateField
 
 
 class TournamentInfoForm(Form):
     name = StringField(
-        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
+        'Nimi', [validators.DataRequired(), validators.Length(min=2, max=60, message="Nimen pitää olla 2-60 merkkiä pitkä")])
     venue = StringField(
-        'Paikka', [validators.DataRequired(), validators.Length(min=6)])
-    date = DateField('Aika (pp.kk.vvvv)', format="%d.%m.%Y")
-    ranking_list = SelectField('Ranking-lista', choices=[])
+        'Paikka', [validators.DataRequired(), validators.Length(min=2, max=60, message="Paikan nimen pitää olla 2-60 merkkiä pitkä")])
+    date = DateField('Aika (pp.kk.vvvv)', [validators.DataRequired(message="Pakollinen kenttä.")], format="%d.%m.%Y")
+    ranking_list = SelectField('Ranking-lista', [validators.DataRequired(message="Pakollinen kenttä.")], choices=[])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)

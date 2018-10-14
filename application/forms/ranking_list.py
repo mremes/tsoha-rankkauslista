@@ -4,12 +4,15 @@ from wtforms import StringField, validators, RadioField, IntegerField
 
 class RankingListForm(Form):
     name = StringField(
-        'Nimi', [validators.DataRequired(), validators.Length(min=6)])
+        'Nimi', [validators.DataRequired(), validators.Length(min=6, max=60,
+                                                              message="Nimen pitää olla vähintään 2 ja enintään 60 merkkiä pitkä.")])
     gender_filter = RadioField('Sukupuoli', choices=[('mies', 'mies'),
                                                      ('nainen', 'nainen'),
                                                      ('mikä tahansa', 'mikä tahansa')])
-    age_cap_hi = IntegerField('Iän yläikäraja')
-    age_cap_lo = IntegerField('Iän alaikäraja')
+    age_cap_hi = IntegerField('Iän yläikäraja',
+                              [validators.NumberRange(min=2, max=130, message="Iän pitää olla välillä 2 ja 130.")])
+    age_cap_lo = IntegerField('Iän alaikäraja',
+                              [validators.NumberRange(min=2, max=130, message="Iän pitää olla välillä 2 ja 130.")])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)

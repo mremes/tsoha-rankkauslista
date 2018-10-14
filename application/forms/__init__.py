@@ -1,6 +1,3 @@
-from ..auth.models import User
-from ..rankings.models import Player, RankingList, Tournament, TournamentPlayer, Match, TournamentPrize
-from .. import db
 from .login import LoginForm
 from .register import RegisterForm
 from .player import PlayerForm

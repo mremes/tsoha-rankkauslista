@@ -1,11 +1,11 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, validators
-from . import User
+from application.auth.models import User
 
 
 class LoginForm(Form):
-    username = StringField('Käyttäjätunnus', [validators.DataRequired()])
-    password = PasswordField('Salasana', [validators.DataRequired()])
+    username = StringField('Käyttäjätunnus', [validators.DataRequired("Syötä käyttäjätunnus")])
+    password = PasswordField('Salasana', [validators.DataRequired("Syötä salasana")])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
