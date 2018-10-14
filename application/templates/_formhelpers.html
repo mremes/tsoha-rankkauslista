@@ -1,6 +1,7 @@
 {% macro render_field(field) %}
     <dt>{{ field.label }}
-    <dd>{{ field(**kwargs)|safe }}
+
+    <dd><div class="form-group">{{ field(class_="form-control form-width", **kwargs)|safe }}</div>
         {% if field.errors %}
             <ul class=errors>
                 {% for error in field.errors %}
@@ -14,6 +15,7 @@
 {% macro render_radiofield(field) %}
     <dt>{{ field.label }}
     <dd>
+    <div class="form-group">
         {% for subfield in field %}
             <tr>
                 <td>{{ subfield }}</td>
@@ -27,5 +29,10 @@
                 {% endfor %}
             </ul>
         {% endif %}
+    </div>
     </dd>
+{% endmacro %}
+
+{% macro submit_button(text) %}
+    <input type='submit' class="btn btn-default" value='{{ text }}'>
 {% endmacro %}

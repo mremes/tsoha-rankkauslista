@@ -36,16 +36,16 @@
     </div>
 </nav>
 <div class='container'>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
     <div class='starter-template'>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
         {% block body %}
             <p>
                 Content.

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from '_formhelpers.html' import render_field %}
+{% from '_formhelpers.html' import render_field, submit_button %}
 
 {% block body %}
     <div class="progress">
@@ -14,6 +14,6 @@
                 {{ render_field(form[attr]) }}
             {% endfor %}
         </dl>
-        <input type='submit' value='Seuraava'>
+        {{ submit_button('seuraava') }}
     </form>
 {% endblock %}

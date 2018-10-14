@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% from '_formhelpers.html' import render_field %}
+{% from '_formhelpers.html' import render_field, submit_button %}
 
 {% block body %}
     <form method='POST' action='{{ url_for('edit_player', playerid=form.player.id) }}'>
@@ -10,6 +10,6 @@
             {{ render_field(form.dob) }}
             {{ render_field(form.pob) }}
         </dl>
-        <input type='submit' value='Vahvista muutokset'>
+        {{ submit_button('Vahvista muutokset') }}
     </form>
 {% endblock %}

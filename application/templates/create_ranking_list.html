@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% from '_formhelpers.html' import render_field, render_radiofield %}
+{% from '_formhelpers.html' import render_field, render_radiofield, submit_button %}
 
 {% block body %}
     <form method='POST'>
@@ -10,6 +10,6 @@
             {{ render_field(form.age_cap_lo) }}
             {{ render_field(form.age_cap_hi) }}
         </dl>
-        <input type='submit' value='Luo lista'>
+        {{ submit_button('Luo lista') }}
     </form>
 {% endblock %}
