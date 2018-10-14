@@ -6,7 +6,7 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
         - käyttäjätunnus: testaaja
         - salasana: testaaja
 * [User storiet](/docs/user_stories.md)
-* [Tietokantakaavio](/docs/images/ermodel.jpg)
+* [Tietokantakaavio](/docs/images/ermodel.png)
 
 ## Huomioita viikon 4 etapeista
 * Monimutkaisia yhteenvetokyselyitä
