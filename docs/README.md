@@ -24,35 +24,55 @@ Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkauks
 Aihe- ja vaatimusmäärittelyn pohjana tulen käyttämään [ohjeissa esitetettyä aihe-esitystä](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Rankkauslista.html) vastaavasta sovelluksesta.
 
 ### Entiteetit
-* Lajiliitto
 * Pelaaja
-* Turnaus
-* Turnausvaihe
+* Ranking
+* Ranking-lista
+* Ranking-kirjaus
 * Ottelu
-* Ranking-pisteytys
+* Turnaus
+* Turnauspelaaja
+* Turnausottelu
+* Turnauspalkinto
 
 #### Lajiliitto
 Lajiliitto on yhtä tai useampaa ranking-listaa operoiva elin, joka määrittää turnausten arvon ja tarjoaa turnauskaaviopohjan. Esimerkiksi eri pelaajaryhmille on oma lajiliittonsa. Lajiliittona voi toimia joko luonnollinen henkilö (operaattori) tai lajiliiton operaattoria esittävä tekoäly.
 
+Lajiliitto on käytännössä järjestelmän ylläpitäjä.
+
 #### Pelaajat
-Jotta pelaaja olisi mukana ranking-listalla, hänet täytyy ensin rekisteröidä järjestelmään. Pelaajan rekisteröinnissä määritetään minkä lajiliiton alle pelaaja kuuluu. Kun pelaaja on rekisteröity lajilistalle, hänet voi asettaa turnauslistoille ja hänellä on jokin ranking-arvo. Pelaajaprofiileista on olemassa liitto-operaattorin näkymä sekä yleisön näkymä, joista selviää mm. pelaajan turnaushistoria sekä ranking-arvon kehitys aikajanalla.
+Jotta pelaaja olisi mukana ranking-listalla, hänet täytyy ensin rekisteröidä järjestelmään. Pelaajan rekisteröinnissä määritetään pelaajan nimi, sukupuoli ja syntymäaika.
+
+Pelaajan voi rekisteröidä sopivalle ranking-listalle. Kun pelaaja on rekisteröity lajilistalle, hänet voi asetella turnauksiin. Pelaaja saa turnauksen peleistä ranking-pisteitä, jotka kertyvät ranking-listan turnauksista.
+
+Pelaajaprofiileista on olemassa näkymä, joista selviää perustietojen lisäksi mm. pelaajan turnaushistoria sekä ranking-arvon kehitys aikajanalla.
+
+#### Ranking-lista
+Ranking-lista on kokoelma sille sopivia pelaajia. Sopivia pelaajia voi rajata syntymäajan ja sukupuolen perusteella.
+
+Turnauksia järjestetään tietyille ranking-listoille, jolloin turnausmenestys vaikuttaa pelaajan sen listan ranking-pisteisiin.
+
+
+#### Ranking ja ranking-kirjaus
+Ranking on entiteetti, joka määrittää mille listalle kukakin pelaaja kuuluu.
+
+Ranking-kirjaus on jonkin ajan ranking-tilanne. Ranking-kirjauksia tulee lisää kun pelaajan ranking-pisteet muuttuvat.
+
+#### Ranking-pisteytys
+Ranking-pisteiden laskentamenetelma tulee olemaan variaatio [ATP-järjestön käyttämästä menetelmästä](https://en.wikipedia.org/wiki/ATP_Rankings#Ranking_method). Järjestelmä tulee mahdollistamaan rinnakkaisten listojen ylläpidon (esim. erillinen lista eri sukupuolille, ikäluokille tai pelimuodoille [esim. kaksin- ja nelinpelit]). Ranking-pisteiden laskennan syötteenä toimivat turnausten tuloskaaviot, jotka pohjautuvat manuaalisesti laadittuihin turnauskaavioihin.
+
+Ranking-pisteytetyt pelaajat kuuluvat ranking-listalle. Lista päivittyy reaaliaikaisesti, ja sillä on olemassa operaattorin ja yleisön näkymä.
 
 #### Turnaukset ja turnausvaiheet
 Tennisturnaukset järjestetään [cup-menetelmällä](https://en.wikipedia.org/wiki/Single-elimination_tournament). Turnauksille luodaan järjestelmän puolesta turnauskaaviopohja, joka täytetään – manuaalisesti tai tekoälyn generoimana – siten, että ranking-listassa korkeimmalla olevat kohtaisivat turnauksen loppupäässä.
 
 Lajiliitto päättää turnauksen arvoista, joista lasketaan yksittäisten turnausten sijoituskohtainen pisteytys. Turnauksen arvoon vaikuttaa mm. palkintosumma sekä turnaukseen osallistuvien pelaajien ranking-sijoitukset ja turnauksen historia.
 
-Turnausvaiheet ovat cup-järjestelmän vaiheita, joihin pelaajat etenevät edeltävien turnausvaiheiden ottelulopputuloksien mukaan. Turnausvaiheet määrittävät pelaajien palkinnot sekä ranking-pistekertoimet.
+Turnausvaiheet ovat cup-järjestelmän vaiheita, joihin pelaajat etenevät edeltävien turnausvaiheiden ottelulopputuloksien mukaan. Turnaussijoitukset määrittävät pelaajien palkinnot sekä ranking-pistekertoimet.
 
-Järjestelmä tarjoaa turnauskaavion laadintaan työkalun, joka mm. validoi turnaukseen osallistuvien pelaajien olevan rekisteröity järjestelmään. Täytetyt turnauskaaviot syötetään järjestelmään kertakäyttöisellä avaimella kirjautumalla lomakkeentäyttösivulle.
+Järjestelmä tarjoaa turnauskaavion laadintaan työkalun, joka mm. validoi turnaukseen osallistuvien pelaajien olevan rekisteröity järjestelmään. Täytetyt turnauskaaviot syötetään järjestelmään turnausjärjestäjien toimesta.
 
 #### Ottelut
 Ottelut ovat kahden pelaajaentiteetin (kaksinpelitenniksessä kahden pelaajan ja nelinpelitenniksessä neljän pelaajan) välisiä kamppailuja, joissa toinen otteluparin pelaajista etenee seuraavaan vaiheeseen.
-
-#### Ranking-pisteytys
-Ranking-pisteiden laskentamenetelma tulee olemaan variaatio [ATP-järjestön käyttämästä menetelmästä](https://en.wikipedia.org/wiki/ATP_Rankings#Ranking_method). Järjestelmä tulee mahdollistamaan rinnakkaisten listojen ylläpidon (esim. erillinen lista eri sukupuolille, ikäluokille tai pelimuodoille [esim. kaksin- ja nelinpelit]). Ranking-pisteiden laskennan syötteenä toimivat turnausten tuloskaaviot, jotka pohjautuvat manuaalisesti laadittuihin turnauskaavioihin.
-
-Ranking-pisteytetyt pelaajat kuuluvat ranking-listalle. Lista päivittyy reaaliaikaisesti, ja sillä on olemassa operaattorin ja yleisön näkymä.
 
 ## Arkkitehtuuri
 Projekti toteutetaan MVC-mallin pohjalta. Model- ja Controller-toiminnallisuus toteutetaan kurssin vaatimusten mukaisesti käyttäen Flask- ja muita relevantteja Python-kirjastoja käyttäen.
