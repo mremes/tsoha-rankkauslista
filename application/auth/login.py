@@ -1,6 +1,5 @@
 import flask_login
-from .models import User
-
+from application.auth.models.user import User
 login_manager = flask_login.LoginManager()
 
 login_manager.login_view = 'login'
