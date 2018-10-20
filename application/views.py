@@ -12,7 +12,6 @@ def index():
     for t in tournaments:
         t.num_players = t.get_num_players()
     player_data = Player.get_aggregate_summary()
-    print(player_data)
     return render_template('index.html',
                            player_data=player_data,
                            rankings=lists,
