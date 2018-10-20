@@ -16,7 +16,7 @@ class TournamentInfoForm(TranslatedForm):
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
-        if kwargs['tournament']:
+        if kwargs.get('tournament'):
             tournament = kwargs['tournament']
             self.name.default = tournament.name
             self.venue.default = tournament.venue
