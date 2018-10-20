@@ -21,13 +21,18 @@
         <ul class='nav navbar-nav'>
             <li><a href='{{ url_for('index') }}'>Etusivu</a></li>
             {% if current_user.is_authenticated %}
-                <li><a href='{{ url_for('register_player') }}'>Rekisteröi pelaaja</a></li>
-                <li><a href='{{ url_for('create_ranking_list') }}'>Luo ranking-lista</a></li>
-                <li><a href='{{ url_for('create_tournament') }}'>Luo turnaus</a></li>
+                {% if "ADMIN" in current_user.roles() or "PLAYER" in current_user.roles() %}
+                    <li><a href='{{ url_for('register_player') }}'>Rekisteröi pelaaja</a></li>
+                {% endif %}
+                {% if "ADMIN" in current_user.roles() %}
+                    <li><a href='{{ url_for('create_ranking_list') }}'>Luo ranking-lista</a></li>
+                {% endif %}
+                {% if "ADMIN" in current_user.roles() or "TOURNAMENT" in current_user.roles() %}
+                    <li><a href='{{ url_for('create_tournament') }}'>Luo turnaus</a></li>
+                {% endif %}
             {% endif %}
             {% if current_user.is_authenticated %}
-                <li class='pull-right login-btn'><a href='{{ url_for('logout') }}'>{{ current_user.username }} (kirjaudu
-                    ulos)</a></li>
+                <li class='pull-right login-btn'><a href='{{ url_for('logout') }}'>{{ current_user.username }} (kirjaudu ulos)</a></li>
             {% else %}
                 <li class='pull-right register-btn'><a href='{{ url_for('register') }}'>Rekisteröidy</a></li>
                 <li class='pull-right login-btn'><a href='{{ url_for('login') }}'>Kirjaudu sisään</a></li>

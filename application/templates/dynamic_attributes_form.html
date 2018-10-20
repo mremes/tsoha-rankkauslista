@@ -2,18 +2,22 @@
 {% from '_formhelpers.html' import render_field, submit_button %}
 
 {% block body %}
+    {% if data.progress %}
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: {{ data.progress }}%"
              aria-valuenow="{{ data.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
+    {% endif %}
+    {% if data.status_text %}
     {{ data.status_text }}<br><br>
-    <form method='POST' action='{{ url_for(data.post_url, tournament_id=tournament_id) }}'>
+    {% endif %}
+    <form method='POST' action='{{ url_for(data.post_url, tournament_id=tournament_id, num_players=num_players) }}'>
         {{ form.hidden_tag() }}
         <dl>
             {% for attr in form.dyn_attrs %}
                 {{ render_field(form[attr]) }}
             {% endfor %}
         </dl>
-        {{ submit_button('Seuraava') }}
+        {{ submit_button(data.button_label) }}
     </form>
 {% endblock %}

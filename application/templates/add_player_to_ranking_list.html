@@ -3,7 +3,7 @@
 {% block body %}
     {% if data %}
         {% set player = data[0] %}
-        {% if lists %}
+        {% if lists and lists|length > 0 %}
             <b>{{ player.name }} voi liittyä seuraaville listoille:</b>
             <table class='table table-striped table-bordered'>
                 {% for list in lists %}
@@ -17,7 +17,7 @@
                 {% endfor %}
             </table>
         {% else %}
-            Pelaajalle ei ole sopivia listoja. Ota yhteyttä liittoon.
+            Pelaajalle ei ole uusia sopivia listoja. Ota yhteyttä liittoon.
         {% endif %}
     {% elif fail_message %}
         {{ fail_message }}
