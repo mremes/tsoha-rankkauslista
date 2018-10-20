@@ -2,8 +2,8 @@ from .player import Player
 from .ranking_list import RankingList
 from .ranking import Ranking
 from .ranking_record import RankingRecord
-from .tournament import Tournament
 from .tournament_player import TournamentPlayer
+from .tournament import Tournament
 from .match import Match
 from .tournament_prize import TournamentPrize
 from .tournament_match import TournamentMatch

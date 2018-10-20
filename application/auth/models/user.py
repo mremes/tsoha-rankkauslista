@@ -25,4 +25,4 @@ class User(db.Model, UserMixin):
         return self.id
 
     def roles(self):
-        return ["ADMIN", "PLAYER", "TOURNAMENT"]
+        return [self.role]

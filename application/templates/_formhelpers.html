@@ -1,6 +1,8 @@
 {% macro render_field(field) %}
     <div class="form-group">
+    {% if not field.hidden %}
     {{ field.label }}
+    {% endif %}
     <dd>{{ field(class_="form-control form-width", **kwargs)|safe }}
         {% if field.errors %}
             <ul class=errors>

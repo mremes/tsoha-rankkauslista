@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h2>{{ name }}</h2>
+    {% if not tournament.is_completed %}
+        {% if current_user.is_authenticated and ("ADMIN" in current_user.roles() or "TOURNAMENT" in current_user.roles()) %}
+            <form name="complete" action="{{ url_for('complete_tournament', tournament_id=tournament.id) }}"
+                  method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <button class="btn btn-danger">Lopeta turnaus</button>
+            </form>
+            <form name="complete" action="{{ url_for('delete_tournament', tournament_id=tournament.id) }}"
+                  method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <button class="btn btn-danger">Poista turnaus</button>
+            </form>
+        {% endif %}
+        {% if current_user.is_authenticated and ("ADMIN" in current_user.roles() or "TOURNAMENT" in current_user.roles()) %}
+            <a href="{{ url_for('tournament_edit_details', tournament_id=tournament.id) }}" class="btn btn-default"
+               role="button">Muokkaa tietoja</a><br>
+            <a href="{{ url_for('tournament_set_results', tournament_id=tournament.id) }}" class="btn btn-default"
+               role="button">Syötä tulokset</a><br>
+            <a href="{{ url_for('tournament_set_ranking_points', tournament_id=tournament.id) }}"
+               class="btn btn-default"
+               role="button">Syötä ranking-pisteet</a><br>
+        {% endif %}
+    {% else %}
+        <h5>Turnaus on päättynyt.</h5>
+    {% endif %}
+
+    <h3>Turnauksen tiedot</h3>
+    {% for label, data in tournament_info %}
+        {{ label }}: {{ data }}<br>
+    {% endfor %}
+    <h3>Sijoitukset</h3>
+    <table class='table table-striped table-bordered'>
+        <thead class='thead-dark'>
+        <tr>
+            <th>Sijoitus</th>
+            <th>Pelaaja</th>
+            <th>Palkintoraha</th>
+            <th>Ranking-pisteet</th>
+        </tr>
+        </thead>
+        {% for prize in tournament_prizes %}
+            <tr>
+                <td>{{ prize.position }}</td>
+                <td>{{ prize.player.name }}</td>
+                <td>{{ prize.prize_money|int }} €</td>
+                <td>{{ prize.ranking_points|int }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3>Turnauksen pelaajat</h3>
+    {% for player in players_info %}
+        <a href="{{ url_for('get_player_info', playerid=player.id) }}">{{ player.name }}</a><br>
+    {% endfor %}
+    <h3>Turnauksen ottelut</h3>
+    <table class="table table-striped table-bordered">
+        <tbody>
+        {% for i in range(matches_info|length) %}
+            <tr>
+                <td colspan="3" style="text-align:center">Ottelu # {{ i+1 }}</td>
+            </tr>
+            <tr>
+                <td>{{ matches_info[i].player1 }}</td>
+                <td>vs.</td>
+                <td>{{ matches_info[i].player2 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

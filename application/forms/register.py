@@ -6,7 +6,7 @@ from application.auth.models import User
 class RegisterForm(Form):
     name = StringField('Nimi', [validators.DataRequired(message="Nimi ei saa olla tyhjä"),
                                 validators.Length(min=2, max=60,
-                                                  message="Nimen pitää olla vähintään 6 ja enintään 60 merkkiä pitkä.")],
+                                                  message="Nimen pitää olla vähintään 2 ja enintään 60 merkkiä pitkä.")],
                        render_kw={'maxlength': 60})
     username = StringField(
         'Käyttäjätunnus', [validators.DataRequired(),
@@ -15,7 +15,7 @@ class RegisterForm(Form):
                                              message="Käyttäjätunnuksen pitää olla vähintään 6 ja enintään 20 merkkiä pitkä.")],
         render_kw={'maxlength': 20})
     role = RadioField("Rooli",
-                      choices=[("ADMIN", "Ylläpitäjä"), ("PLAYER", "Pelaaja"), ("TOURNAMENT", "Turnausjärjestäjä")])
+                      choices=[("ADMIN", "Ylläpitäjä"), ("PLAYER", "Pelaaja-agentti"), ("TOURNAMENT", "Turnausjärjestäjä")])
     password = PasswordField('Salasana', [validators.Length(
         min=6, max=50, message="Salasanan pitää olla vähintään 6 ja enintään 50 merkkiä pitkä."),
         validators.EqualTo('confirm', message='Salasanojen pitää olla samat.')])

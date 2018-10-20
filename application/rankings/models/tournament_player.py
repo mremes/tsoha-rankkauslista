@@ -1,5 +1,5 @@
 from application import db
-from . import Tournament, Player
+from . import Player
 
 
 class TournamentPlayer(db.Model):
@@ -11,14 +11,10 @@ class TournamentPlayer(db.Model):
     position = db.Column(db.Integer, server_default='-1')
 
     def __init__(self,
-                 tournament: Tournament,
+                 tournament,
                  player: Player):
         self.tournament_id = tournament.id
         self.player_id = player.id
 
     def update_position(self, position: int):
         self.position = position
-
-    @staticmethod
-    def get_num_players_in_tournament(tournament):
-        return len(TournamentPlayer.query.filter_by(tournament_id=tournament.id).all())
