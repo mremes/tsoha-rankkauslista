@@ -39,7 +39,9 @@ python run.py
 
 
 ## Aiheen kuvaus
-Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkaukseen tarkoitettu verkkojärjestelmä. Ajatuksena on toteuttaa turnauksille soveltuva rankkausmenetelmä sekä tarvittavat web-pohjaiset tietojensyöttö- ja esitystoiminnot.
+Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkaukseen sekä tennisturnauksen järjestämisen tueksi tarkoitettu verkkojärjestelmä. Ajatuksena on toteuttaa turnauksille soveltuva rankkausmenetelmä sekä tarvittavat web-pohjaiset tietojensyöttö- ja esitystoiminnot.
+
+Sovellus koostuu pelaajarekisteristä, rankkauslistarekisteristä, sekä turnausluontiportaalista ja turnausrekisteristä. Pelaajarekisteriin lisätään pelaajia pelaaja-agenttien toimesta, ja turnausjärjestäjät laativat turnauksia. Ylläpitäjät tekevät kaikkea, ja erityisesti hyväksyvät turnausjärjestäjien syöttämät turnaustulokset.
 
 Aihe- ja vaatimusmäärittelyn pohjana tulen käyttämään [ohjeissa esitetettyä aihe-esitystä](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Rankkauslista.html) vastaavasta sovelluksesta.
 
@@ -83,16 +85,16 @@ Ranking-pisteiden laskentamenetelma tulee olemaan variaatio [ATP-järjestön kä
 Ranking-pisteytetyt pelaajat kuuluvat ranking-listalle. Lista päivittyy reaaliaikaisesti, ja sillä on olemassa operaattorin ja yleisön näkymä.
 
 #### Turnaukset ja turnausvaiheet
-Tennisturnaukset järjestetään [cup-menetelmällä](https://en.wikipedia.org/wiki/Single-elimination_tournament). Turnauksille luodaan järjestelmän puolesta turnauskaaviopohja, joka täytetään – manuaalisesti tai tekoälyn generoimana – siten, että ranking-listassa korkeimmalla olevat kohtaisivat turnauksen loppupäässä.
-
-Lajiliitto päättää turnauksen arvoista, joista lasketaan yksittäisten turnausten sijoituskohtainen pisteytys. Turnauksen arvoon vaikuttaa mm. palkintosumma sekä turnaukseen osallistuvien pelaajien ranking-sijoitukset ja turnauksen historia.
+Tennisturnaukset järjestetään [cup-menetelmällä](https://en.wikipedia.org/wiki/Single-elimination_tournament). Turnauksille luodaan järjestelmän puolesta turnauskaaviopohja, joka täytetään – manuaalisesti tai tekoälyn generoimana tulevissa versioissa – siten, että ranking-listassa korkeimmalla olevat kohtaisivat turnauksen loppupäässä.
 
 Turnausvaiheet ovat cup-järjestelmän vaiheita, joihin pelaajat etenevät edeltävien turnausvaiheiden ottelulopputuloksien mukaan. Turnaussijoitukset määrittävät pelaajien palkinnot sekä ranking-pistekertoimet.
 
-Järjestelmä tarjoaa turnauskaavion laadintaan työkalun, joka mm. validoi turnaukseen osallistuvien pelaajien olevan rekisteröity järjestelmään. Täytetyt turnauskaaviot syötetään järjestelmään turnausjärjestäjien toimesta.
+Järjestelmä tarjoaa turnauskaavion laadintaan työkalun, joka mm. validoi turnaukseen osallistuvien pelaajien olevan rekisteröity järjestelmään ja muuten laadittu oikein. Täytetyt turnauskaaviot syötetään järjestelmään turnausjärjestäjien toimesta. Liitto (ylläpitäjä) kirjaa turnauksen sijoituksille ranking-pisteet ja lopettaa turnauksen, jonka jälkeen pisteet päivittyvät välittömästi.
 
 #### Ottelut
 Ottelut ovat kahden pelaajaentiteetin (kaksinpelitenniksessä kahden pelaajan ja nelinpelitenniksessä neljän pelaajan) välisiä kamppailuja, joissa toinen otteluparin pelaajista etenee seuraavaan vaiheeseen.
+
+Ottelutoiminnallisuus ei ole toteutettu projektin nykyisessä versiossa vaan on laajennettavissa seuraaviin versioihin.
 
 ## Arkkitehtuuri
 Projekti toteutetaan MVC-mallin pohjalta. Model- ja Controller-toiminnallisuus toteutetaan kurssin vaatimusten mukaisesti käyttäen Flask- ja muita relevantteja Python-kirjastoja käyttäen.
