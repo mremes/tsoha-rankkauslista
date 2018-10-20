@@ -1,18 +1,17 @@
 from flask_wtf import Form
-from wtforms import StringField, validators, DateField, RadioField
+from wtforms import StringField, validators, RadioField, DateField
 from application.rankings.models import Player
+from application.forms.extensions import TranslatedForm
 
 
-class PlayerForm(Form):
+class PlayerForm(TranslatedForm):
     name = StringField(
         'Nimi', [validators.DataRequired(),
-                 validators.Length(min=2, max=60, message="Nimi on vähintään 6 ja enintään 60 merkkiä pitkä.")])
+                 validators.Length(min=2, max=60, message="Nimi on vähintään 2 ja enintään 60 merkkiä pitkä.")])
     gender = RadioField('Sukupuoli', [validators.DataRequired(message="Valitse sukupuoli")], choices=[
         ('mies', 'mies'), ('nainen', 'nainen'), ('muu', 'muu')])
-    dob = DateField('Syntymäaika (pp.kk.vvvv)', format="%d.%m.%Y",
-                    validators=[validators.DataRequired("Syötä syntymäaika")])
-    pob = StringField('Syntymäpaikka', [validators.DataRequired("Syötä syntymäaika"),
-                                        validators.Length(min=2, max=70, message="Enintään 70 merkkiä.")])
+    dob = DateField('Syntymäaika (pp.kk.vvvv)', format="%d.%m.%Y")
+    pob = StringField('Syntymäpaikka', [validators.DataRequired("Syötä syntymäaika"), validators.Length(min=2, max=70, message="Vähintään 2 ja enintään 70 merkkiä.")])
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
@@ -31,6 +30,6 @@ class PlayerForm(Form):
         if not self.player:
             user = Player.query.filter_by(name=self.name.data).first()
             if user is not None:
-                self.name.errors.append('Pelaaja on jo olemassa.')
+                self.name.errors = ['Pelaaja on jo olemassa.']
                 return False
         return True
