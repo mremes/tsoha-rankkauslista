@@ -38,14 +38,14 @@ class Player(db.Model):
             SUM(list_count) list_count,
             SUM(score) score
         FROM 
-            Player a
+            "Player" a
         LEFT JOIN
             (
             SELECT 
                 player_id,
                 COUNT(DISTINCT list_id) list_count
             FROM 
-                Ranking
+                "Ranking"
             GROUP BY 
                 player_id
             ) b
@@ -57,21 +57,21 @@ class Player(db.Model):
                 c.player_id player_id,
                 score
             FROM
-               RankingRecord a
+               "RankingRecord" a
             INNER JOIN
                 (
                 SELECT 
                     ranking_id,
                     MAX(timestamp) maxts
                 FROM 
-                    RankingRecord
+                    "RankingRecord"
                 GROUP BY 
                     ranking_id 
                 ) b
             ON 
               a.ranking_id = b.ranking_id AND a.timestamp = b.maxts
             LEFT JOIN 
-              Ranking c
+              "Ranking" c
             ON a.ranking_id = c.id
             ) c
         ON 

@@ -34,11 +34,11 @@ class RankingList(db.Model):
         from
         (
         select a.ranking_id ranking_id, a.timestamp ts, a.score score
-        from RankingRecord a
+        from "RankingRecord" a
         inner join
         (
         select id, max(timestamp) ts
-        from RankingRecord
+        from "RankingRecord"
         group by id
         ) b
         on a.id = b.id and a.timestamp = b.ts
@@ -46,7 +46,7 @@ class RankingList(db.Model):
         inner join
         (
         select id, player_id
-        from Ranking
+        from "Ranking"
         where list_id = {}
         ) c
         on a.ranking_id = c.id
@@ -65,12 +65,12 @@ class RankingList(db.Model):
     @staticmethod
     def get_suitable_ranking_lists(player):
         query = text("""
-        SELECT * FROM RankingList
+        SELECT * FROM "RankingList"
         WHERE genders LIKE :gender
         AND :age BETWEEN age_cap_lo AND age_cap_hi
         AND id NOT IN
         (
-        SELECT list_id FROM Ranking WHERE player_id = :user_id
+        SELECT list_id FROM "Ranking" WHERE player_id = :user_id
         )
         """).params(gender="%{}%".format(player.gender),
                     age=datetime.now().year - player.dateofbirth.year,
