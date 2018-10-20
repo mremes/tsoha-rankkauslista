@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, flash, url_for, redirect
 from flask_login import current_user
 from flask_sqlalchemy import SQLAlchemy
 
@@ -45,7 +45,8 @@ def login_required(roles=None):
                         break
 
             if unauthorized:
-                return login_manager.unauthorized()
+                flash('Sinulla ei ole oikeuksia käyttää tätä toiminnallisuutta.')
+                return redirect(url_for('index'))
 
             return fn(*args, **kwargs)
 
