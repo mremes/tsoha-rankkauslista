@@ -8,11 +8,12 @@ def index():
     lists = RankingList.query.all()
     for l in lists:
         l.populate_players()
-    tournaments = Tournament.query.all()
+    tournaments = Tournament.query.filter_by(is_published=True).all()
     for t in tournaments:
-        t.num_players = TournamentPlayer.get_num_players_in_tournament(t)
-
+        t.num_players = t.get_num_players()
+    player_data = Player.get_aggregate_summary()
+    print(player_data)
     return render_template('index.html',
-                           players=Player.query.all(),
+                           player_data=player_data,
                            rankings=lists,
                            tournaments=tournaments)
