@@ -1,6 +1,7 @@
 from application import db
 from typing import List
 from sqlalchemy_utils.types.scalar_list import ScalarListType
+from sqlalchemy import text
 from datetime import datetime
 
 from . import Player
@@ -63,10 +64,15 @@ class RankingList(db.Model):
 
     @staticmethod
     def get_suitable_ranking_lists(player):
-        query = """
+        query = text("""
         SELECT * FROM RankingList
-        WHERE genders LIKE '%%{gender}%%'
-        AND {age} BETWEEN age_cap_lo AND age_cap_hi
-        """.format(gender=player.gender,
-                   age=datetime.now().year - player.dateofbirth.year)
-        return RankingList.query.instances(db.engine.execute(query))
+        WHERE genders LIKE :gender
+        AND :age BETWEEN age_cap_lo AND age_cap_hi
+        AND id NOT IN
+        (
+        SELECT list_id FROM Ranking WHERE player_id = :user_id
+        )
+        """).params(gender="%{}%".format(player.gender),
+                    age=datetime.now().year - player.dateofbirth.year,
+                    user_id=player.id)
+        return list(RankingList.query.instances(db.engine.execute(query)))
