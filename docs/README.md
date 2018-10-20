@@ -1,22 +1,19 @@
 # Tennis Grand Ranking
 Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovellus -kurssin](https://courses.helsinki.fi/fi/tkt20011/124960890) suorittamiseksi. Tavoitteena on luoda Python-backendia – erityisesti Flask-kirjastoa – käyttävä verkkosovellus.
 
-* [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/)
-    - testitunnukset:
+* [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/). Näiden testitunnukset eri rooleille ovat:
+    - ylläpitäjän testitunnukset:
         - käyttäjätunnus: testaaja
         - salasana: testaaja
+    - turnausjärjestäjän testitunnukset:
+        - käyttäjätunnus: turnausj
+        - salasana: turnausj
+    - pelaaja-agentin testitunnukset:
+        - käyttäjätunnus: pagentti
+        - salasana: pagentti
 * [User storiet](/docs/user_stories.md)
 * [Tietokantakaavio](/docs/images/ermodel.png)
 
-## Huomioita viikon 4 etapeista
-* Monimutkaisia yhteenvetokyselyitä
-    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L112-L133](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L112-L133)
-    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L82-L86](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/rankings/views.py#L82-L86)
-    - [https://github.com/mremes/tsoha-rankkauslista/blob/master/application/views.py#L10-L13](https://github.com/mremes/tsoha-rankkauslista/blob/master/application/views.py#L10-L13)
-* Uusia tietokantatauluja otettu käyttöön: Ranking, RankingList, RankingRecord
-    - nyt projektissa on yhteensä 5 aktiivista tietokantataulua
-* Bootstrap on ollut käytössä alkaen viikosta 1
-* Ranking-listojen luomisen ja pelaajien lisäämisen niihin mahdollistava toiminnallisuus lisättiin tällä viikolla
 
 ## Asennusohje
 Voit asentaa tämän sovelluksen omalle koneellesi. Oletetaan, että sinulla on käytössäsi Pythonista versio 3.6.6 tai uudempi.
@@ -35,7 +32,17 @@ pip install -r requirements.txt
 python run.py
 ```
 
-2. Käytä sovellusta Internet-selaimella osoitteessa [http://localhost:5000](http://localhost:5000)
+2. Käytä sovellusta Internet-selaimella osoitteessa [http://localhost:5000](http://localhost:5000).
+
+3. Rekisteröi itsesi järjestelmään "Rekisteröidy" -painikkeesta.
+
+Jos haluat käyttää [Herokussa toimivaa versiota], niin toimi näin:
+
+1. Valitse jotkin käyttäjätunnukset tämän tiedoston yllä olevasta käyttäjätunnuslistasta.
+
+2. Kirjaudu tunnuksilla sisään.
+
+3. Käytä niitä toiminnallisuuksia, jotka valitsemasi käyttäjän roolille ovat sallittu.
 
 
 ## Aiheen kuvaus
