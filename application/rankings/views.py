@@ -417,7 +417,7 @@ def delete_tournament(tournament_id):
     db.session.commit()
 
 
-@app.route('/tournament/<tournament_id>/edit', methods=["POST"])
+@app.route('/tournament/<tournament_id>/edit', methods=["GET", "POST"])
 @login_required(["TOURNAMENT", "ADMIN"])
 def tournament_edit_details(tournament_id):
     if not tournament_id:
@@ -430,4 +430,15 @@ def tournament_edit_details(tournament_id):
         flash('Turnausta ei ole olemassa.')
         return redirect(utils.get_next_url())
 
-    form = TournamentInfoForm(tournament)
+    form = TournamentInfoForm(tournament=tournament)
+
+    if form.validate_on_submit():
+        tournament = Tournament.query.get(tournament_id)
+        tournament.name = form.name.data
+        tournament.venue = form.venue.data
+        tournament.date = form.date.data
+        db.session.commit()
+        flash('Onnistuneesti muokattiin turnausta %s' % tournament_id)
+        return redirect(url_for('get_tournament_info', tournament_id=tournament_id))
+
+    return render_template('edit_tournament.html', form=form, tournament_id=tournament_id)

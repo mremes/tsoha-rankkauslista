@@ -20,8 +20,7 @@ class TournamentInfoForm(TranslatedForm):
             tournament = kwargs['tournament']
             self.name.default = tournament.name
             self.venue.default = tournament.venue
-            self.date.default = tournament.date
-            self.ranking_list.default = tournament.ranking_list_id
+            self.date.default = tournament.date.date()
             self.process()
 
     def validate(self):
