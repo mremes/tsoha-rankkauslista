@@ -2,7 +2,7 @@
 
 User storyt on kategorisoitu pääasiallisesti entiteettityyppien mukaan. Projektin entiteetit löydät [READMEsta](README.md#entiteetit).
 
-## Roolit
+## Käyttäjäryhmät
 * Ylläpitäjä
     - toimii lajiliittona: pystyy tekemään kaikkea järjestelmässä
     - erityisesti, luo ranking-listat ja lisää ranking-pisteet turnauksiin
