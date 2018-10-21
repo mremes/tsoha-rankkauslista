@@ -3,15 +3,16 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
 
 # Demosovellus
 [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/) löytyy painamalla linkkiä. Järjestelmän testitunnukset eri käyttäjäryhmille ovat:
-    - ylläpitäjän/lajiliiton testitunnukset:
-        - käyttäjätunnus: testaaja
-        - salasana: testaaja
-    - turnausjärjestäjän testitunnukset:
-        - käyttäjätunnus: turnausj
-        - salasana: turnausj
-    - pelaaja-agentin testitunnukset:
-        - käyttäjätunnus: pagentti
-        - salasana: pagentti
+
+- ylläpitäjän/lajiliiton testitunnukset:
+    - käyttäjätunnus: testaaja
+    - salasana: testaaja
+- turnausjärjestäjän testitunnukset:
+    - käyttäjätunnus: turnausj
+    - salasana: turnausj
+- pelaaja-agentin testitunnukset:
+    - käyttäjätunnus: pagentti
+    - salasana: pagentti
 
 ## Dokumentaatio
 * [Tietokantakaavio](/docs/images/ermodel.png)
