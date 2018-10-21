@@ -55,7 +55,7 @@ class Player(db.Model):
             (
             SELECT 
                 c.player_id player_id,
-                score
+                SUM(score) score
             FROM
                "RankingRecord" a
             INNER JOIN
@@ -68,11 +68,13 @@ class Player(db.Model):
                 GROUP BY 
                     ranking_id 
                 ) b
-            ON 
+            ON
               a.ranking_id = b.ranking_id AND a.timestamp = b.maxts
             LEFT JOIN 
               "Ranking" c
-            ON a.ranking_id = c.id
+            ON
+              a.ranking_id = c.id
+            GROUP BY player_id
             ) c
         ON 
             a.id = c.player_id
