@@ -122,3 +122,12 @@ ORDER BY score DESC
 ```
 
 Pelaajasta kiinnostuneena, haluan avata pelaajan profiilisivun, josta näen perustiedot sekä mille ranking-listoille hän kuuluu.
+
+## Indeksit
+```
+CREATE INDEX PlayerMain
+ON Player (registered_at, name);
+
+CREATE INDEX RankingRecordByTime
+ON RankingRecord (timestamp);
+```
