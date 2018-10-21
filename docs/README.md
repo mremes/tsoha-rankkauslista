@@ -1,8 +1,9 @@
 # Tennis Grand Ranking
 Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovellus -kurssin](https://courses.helsinki.fi/fi/tkt20011/124960890) suorittamiseksi. Tavoitteena on luoda Python-backendia – erityisesti Flask-kirjastoa – käyttävä verkkosovellus.
 
-* [Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/). Näiden testitunnukset eri rooleille ovat:
-    - ylläpitäjän testitunnukset:
+# Demosovellus
+[Herokussa pyörivä demosovellus](https://tsoha-rankkauslista.herokuapp.com/) löytyy painamalla linkkiä. Järjestelmän testitunnukset eri käyttäjäryhmille ovat:
+    - ylläpitäjän/lajiliiton testitunnukset:
         - käyttäjätunnus: testaaja
         - salasana: testaaja
     - turnausjärjestäjän testitunnukset:
@@ -11,10 +12,16 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
     - pelaaja-agentin testitunnukset:
         - käyttäjätunnus: pagentti
         - salasana: pagentti
-* [User storiet](/docs/user_stories.md)
+
+## Dokumentaatio
 * [Tietokantakaavio](/docs/images/ermodel.png)
+* [Asennusohje](https://github.com/mremes/tsoha-rankkauslista#asennusohje)
+* [Käyttöohje](https://github.com/mremes/tsoha-rankkauslista#k%C3%A4ytt%C3%B6ohje)
+* [User storiet](/docs/user_stories.md)
+* [Käyttäjäryhmät](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/user_stories.md#k%C3%A4ytt%C3%A4j%C3%A4ryhm%C3%A4t)
+* [CREATE TABLE-lauseet](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/create_statements.sql)
 
-
+* 
 ## Asennusohje
 Voit asentaa tämän sovelluksen omalle koneellesi. Oletetaan, että sinulla on käytössäsi Pythonista versio 3.6.6 tai uudempi.
 
