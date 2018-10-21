@@ -51,6 +51,18 @@ Jos haluat käyttää [Herokussa toimivaa versiota](https://tsoha-rankkauslista.
 
 3. Käytä niitä toiminnallisuuksia, jotka valitsemasi käyttäjän roolille ovat sallittu.
 
+#### Tyypillinen "käyttöpolku" ylläpitäjälle
+1. Luo tunnus ylläpitäjä-roolilla
+2. Kirjaudu sisään tunnuksilla
+3. Lisää pelaaja
+4. Lisää toinen pelaaja
+5. Luo ranking-lista (johon luodut pelaajat sopivat)
+6. Lisää pelaajat ranking-listalle (nyt ranking-listalla on kaksi pelaajaa)
+7. Luo turnaus 2 pelaajan välille
+8. Syötä saatavat ranking-pisteet turnauksessa
+9. Syötä turnauksen tulos
+10. Lopeta turnaus
+11. Tarkastele uutta ranking-listan tilannetta
 
 ## Aiheen kuvaus
 Toteutettava verkkosovellus on rekisteröityjen tenniksen harrastajien rankkaukseen sekä tennisturnauksen järjestämisen tueksi tarkoitettu verkkojärjestelmä. Ajatuksena on toteuttaa turnauksille soveltuva rankkausmenetelmä sekä tarvittavat web-pohjaiset tietojensyöttö- ja esitystoiminnot.
