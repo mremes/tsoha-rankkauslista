@@ -2,8 +2,20 @@
 
 User storyt on kategorisoitu pääasiallisesti entiteettityyppien mukaan. Projektin entiteetit löydät [READMEsta](README.md#entiteetit).
 
+## Roolit
+* Ylläpitäjä
+    - toimii lajiliittona: pystyy tekemään kaikkea järjestelmässä
+    - erityisesti, luo ranking-listat ja lisää ranking-pisteet turnauksiin
+* Pelaaja-agentti
+    - pystyy lisäämään pelaajia järjestelmään
+    - pystyy lisäämään lisäämiään pelaajia ranking-listoilla, muokkaamaan ja poistamaan heidän tietojaan
+* Turnausjärjestäjä:
+    - luo turnaukset
+    - lisää turnaustulokset
+    - lopettaa turnaukset
+
 ## Lajiliitto (ylläpitäjä)
-Lajiliittona, haluan luoda ranking-listan, jolle rekisteröidyn pelaaja voi lisätä pelaaja-agentin toimesta.
+Lajiliittona, haluan luoda ranking-listan, jolle rekisteröidyn pelaajan voi lisätä pelaaja-agentin toimesta.
 ```
 INSERT INTO Player (name, gender, dateofbirth, placeofbirth, registered_dt, created_by) VALUES ("Pekka Pelaaja", "mies", "17.07.1994", "Helsinki", CURRENT_TIMESTAMP, 1);
 ```
