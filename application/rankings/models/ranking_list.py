@@ -50,6 +50,7 @@ class RankingList(db.Model):
         where list_id = {}
         ) c
         on a.ranking_id = c.id
+        order by score desc
         """.format(self.id)
 
         results = db.engine.execute(qry)
