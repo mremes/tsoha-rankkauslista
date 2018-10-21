@@ -17,5 +17,8 @@ class TournamentPlayersForm(Form):
         rl = RankingList.query.get(tournament.ranking_list_id)
         rl.populate_players()
         num_players = len(rl.players)
+        if num_players <= 1:
+            self.num_players.choices = []
+            return
         num_players_cap = [(num_players, x) for x in range(1, 8) if num_players - 2**x >= 0][-1][1]
         self.num_players.choices = [(2 ** x, 2 ** x) for x in range(1, num_players_cap+1)]

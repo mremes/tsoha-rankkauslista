@@ -29,7 +29,8 @@ def get_player_info(playerid):
     player_data = Player.query.get(playerid)
 
     if player_data:
-        rlists = RankingList.query.filter(RankingList.id.in_([r.list_id for r in Ranking.query.filter_by(player_id=player_data.id)]))
+        rlists = RankingList.query.filter(
+            RankingList.id.in_([r.list_id for r in Ranking.query.filter_by(player_id=player_data.id)]))
         return render_template('player_info.html', data=[player_data], rlists=rlists)
     else:
         flash('Pelaajaa tunnuksella %s ei ole olemassa.' % playerid)
@@ -101,6 +102,10 @@ def retire_player(playerid):
         flash('Pelaajaa tunnuksella %s ei ole olemassa.' % playerid)
         return redirect(utils.get_next_url())
 
+    rankings = Ranking.query.filter_by(player_id=player_data.id).all()
+    for ranking in rankings:
+        RankingRecord.query.filter_by(ranking_id=ranking.id).delete()
+    Ranking.query.filter_by(player_id=player_data.id).delete()
     db.session().delete(player_data)
     db.session.commit()
 
@@ -303,8 +308,17 @@ def get_tournament_info(tournament_id):
 
     matches_info = []
     for match in tournament_matches:
-        match_info = {'player1': Player.query.get(TournamentPlayer.query.get(match.player1_id).player_id).name,
-                      'player2': Player.query.get(TournamentPlayer.query.get(match.player2_id).player_id).name}
+        player1 = Player.query.get(TournamentPlayer.query.get(match.player1_id).player_id)
+        player2 = Player.query.get(TournamentPlayer.query.get(match.player2_id).player_id)
+        unknown_name = "Tuntematon / poistettu pelaaja"
+        if not player1:
+            player1 = Player(unknown_name, None, None, None, None)
+
+        if not player2:
+            player2 = Player(unknown_name, None, None, None, None)
+
+        match_info = {'player1': player1.name,
+                      'player2': player2.name}
         matches_info.append(match_info)
 
     return render_template('tournament.html',
@@ -411,10 +425,13 @@ def delete_tournament(tournament_id):
         flash('Turnausta ei ole olemassa.')
         return redirect(utils.get_next_url())
 
-    db.session.delete(TournamentPrize.query.filter_by(tournament_id=tournament_id))
-    db.session.delete(TournamentPlayer.query.filter_by(tournament_id=tournament_id))
+    TournamentPrize.query.filter_by(tournament_id=tournament_id).delete()
+    TournamentPlayer.query.filter_by(tournament_id=tournament_id).delete()
+    Match.query.filter_by(tournament_id=tournament_id).delete()
     db.session.delete(tournament)
     db.session.commit()
+
+    return redirect(utils.get_next_url())
 
 
 @app.route('/tournament/<tournament_id>/edit', methods=["GET", "POST"])

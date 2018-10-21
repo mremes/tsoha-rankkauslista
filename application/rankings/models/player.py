@@ -23,7 +23,8 @@ class Player(db.Model):
         self.gender = gender
         self.dateofbirth = dateofbirth
         self.placeofbirth = placeofbirth
-        self.created_by = created_by.id
+        if created_by:
+            self.created_by = created_by.id
 
     @staticmethod
     def get_genders():

@@ -7,7 +7,7 @@ class TournamentPlayer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     tournament_id = db.Column(db.Integer, db.ForeignKey('Tournament.id'))
-    player_id = db.Column(db.Integer, db.ForeignKey('Player.id'))
+    player_id = db.Column(db.Integer)
     position = db.Column(db.Integer, server_default='-1')
 
     def __init__(self,
