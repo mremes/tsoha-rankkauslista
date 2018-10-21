@@ -20,6 +20,8 @@
                role="button">Muokkaa tietoja</a><br>
             <a href="{{ url_for('tournament_set_results', tournament_id=tournament.id) }}" class="btn btn-default"
                role="button">Syötä tulokset</a><br>
+        {% endif %}
+        {% if current_user.is_authenticated and "ADMIN" in current_user.roles() %}
             <a href="{{ url_for('tournament_set_ranking_points', tournament_id=tournament.id) }}"
                class="btn btn-default"
                role="button">Syötä ranking-pisteet</a><br>
