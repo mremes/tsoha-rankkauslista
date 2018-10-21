@@ -1,7 +1,6 @@
 from flask_wtf import Form
 
-from application.rankings import TournamentPlayer
-from application.rankings.models import TournamentPrize
+from application.tournaments.models import TournamentPlayer, TournamentPrize
 from application import db
 from wtforms import IntegerField
 

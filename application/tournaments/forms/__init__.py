@@ -1,0 +1,4 @@
+from .tournament_info import TournamentInfoForm
+from .tournament_layout import TournamentLayoutForm
+from .tournament_players import TournamentPlayersForm
+from .tournament_prizes import TournamentPrizesForm

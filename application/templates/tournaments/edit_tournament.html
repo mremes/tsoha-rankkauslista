@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% from '_formhelpers.html' import render_field, submit_button, render_radiofield %}
+
+{% block body %}
+    <form method='POST' action='{{ url_for('tournament_edit_details', tournament_id=tournament_id) }}'>
+        {{ form.hidden_tag() }}
+        <dl>
+            {{ render_field(form.name) }}
+            {{ render_field(form.venue) }}
+            {{ render_field(form.date) }}
+        </dl>
+        {{ submit_button('Vahvista muutokset') }}
+    </form>
+{% endblock %}

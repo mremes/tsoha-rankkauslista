@@ -57,8 +57,12 @@ def login_required(roles=None):
 
 from application import views
 
+from application.players import models
+from application.players import views
 from application.rankings import models
 from application.rankings import views
+from application.tournaments import models
+from application.tournaments import views
 
 from application.auth.models import user
 from application.auth import views

@@ -1,5 +1,6 @@
 from application import db
-from . import Player, RankingList
+from application.rankings.models import RankingList
+from application.players.models import Player
 
 
 class Ranking(db.Model):

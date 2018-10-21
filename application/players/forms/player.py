@@ -1,6 +1,6 @@
 from flask_wtf import Form
 from wtforms import StringField, validators, RadioField, DateField
-from application.rankings.models import Player
+from application.players.models import Player
 from application.forms.extensions import TranslatedForm
 
 

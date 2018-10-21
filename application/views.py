@@ -1,6 +1,8 @@
 from flask import render_template
 from application import app
-from application.rankings.models import Player, RankingList, Tournament, TournamentPlayer
+from application.players.models import Player
+from application.rankings.models import RankingList
+from application.tournaments.models import Tournament
 
 
 @app.route('/')

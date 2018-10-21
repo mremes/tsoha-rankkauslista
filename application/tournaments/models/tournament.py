@@ -1,5 +1,5 @@
 from application import db
-from application.rankings.models import TournamentPlayer
+from application.tournaments.models import TournamentPlayer
 from datetime import datetime
 
 

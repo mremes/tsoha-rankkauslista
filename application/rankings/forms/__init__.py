@@ -1,0 +1,1 @@
+from .ranking_list import RankingListForm

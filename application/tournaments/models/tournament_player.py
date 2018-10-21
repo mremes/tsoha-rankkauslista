@@ -1,5 +1,5 @@
 from application import db
-from . import Player
+from application.players.models import Player
 
 
 class TournamentPlayer(db.Model):

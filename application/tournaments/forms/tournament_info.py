@@ -1,7 +1,8 @@
 from datetime import datetime
 
 from flask_wtf import Form
-from application.rankings.models import RankingList, Tournament
+from application.rankings.models import RankingList
+from application.tournaments.models import Tournament
 from wtforms import StringField, validators, SelectField, DateField
 from application.forms.extensions import TranslatedForm
 
@@ -16,7 +17,7 @@ class TournamentInfoForm(TranslatedForm):
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
-        if kwargs.get('tournament'):
+        if kwargs.get('tournament') and not self.is_submitted():
             tournament = kwargs['tournament']
             self.name.default = tournament.name
             self.venue.default = tournament.venue

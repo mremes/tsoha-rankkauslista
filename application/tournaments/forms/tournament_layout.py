@@ -1,8 +1,9 @@
 from flask_wtf import Form
 from flask import flash
 
-from application.rankings import RankingList, Ranking, TournamentPrize
-from application.rankings.models import Tournament, TournamentPlayer, Player, Match
+from application.rankings.models import RankingList, Ranking
+from application.tournaments.models import Tournament, TournamentPlayer, TournamentPrize, Match
+from application.players.models import Player
 from application import db
 from wtforms import SelectField
 

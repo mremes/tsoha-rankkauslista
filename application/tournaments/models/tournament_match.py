@@ -1,5 +1,5 @@
 from application import db
-from . import Tournament, Match, TournamentPrize
+from application.tournaments.models import Tournament, Match, TournamentPrize
 
 
 class TournamentMatch(db.Model):

@@ -1,6 +1,7 @@
 from application import db
-from application.rankings.models import Player, Ranking, RankingRecord
-from . import Tournament
+from application.players.models import Player
+from application.rankings.models import Ranking, RankingRecord
+from application.tournaments.models import Tournament
 
 
 class TournamentPrize(db.Model):

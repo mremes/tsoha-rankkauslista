@@ -4,7 +4,7 @@ from sqlalchemy_utils.types.scalar_list import ScalarListType
 from sqlalchemy import text
 from datetime import datetime
 
-from . import Player
+from application.players.models import Player
 
 
 class RankingList(db.Model):
