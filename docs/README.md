@@ -21,7 +21,6 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
 * [Käyttäjäryhmät](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/user_stories.md#k%C3%A4ytt%C3%A4j%C3%A4ryhm%C3%A4t)
 * [CREATE TABLE-lauseet](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/create_statements.sql)
 
-* 
 ## Asennusohje
 Voit asentaa tämän sovelluksen omalle koneellesi. Oletetaan, että sinulla on käytössäsi Pythonista versio 3.6.6 tai uudempi.
 
