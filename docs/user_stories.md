@@ -23,8 +23,7 @@ Lajiliittona, haluan tarjota turnauksen järjestäjälle listan käytettävissä
 ```
 SELECT * 
 FROM Player 
-WHERE dateofbirth BETWEEN 16 and 25
-AND gender = "nainen";
+AND gender = "mies";
 ```
 
 Lajiliittona, haluan tarkastella turnauksen järjestäjän syöttämiä turnaustuloksia ja antaa turnauksen sijoituksille ranking-pisteitä.
@@ -57,7 +56,7 @@ SELECT ranking_id, max(timestamp) maxts
 FROM RankingRecord
 GROUP BY ranking_id
 ) b
-ON a.ranking_id = b.ranking_id AND a.timestamp = a.maxtws
+ON a.ranking_id = b.ranking_id AND a.timestamp = b.maxts
 INNER JOIN
 (
 SELECT id
