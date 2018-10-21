@@ -38,7 +38,7 @@ WHERE id = 1;
 ```
 
 ## Pelaaja
-Pelaajan-agenttina, haluan lisätä pelaajan järjestelmään.
+Pelaaja-agenttina, haluan lisätä pelaajan järjestelmään.
 ```
 INSERT INTO Player (name, gender, dateofbirth, placeofbirth, registered_dt, created_by) VALUES ("Pekka Pelaaja", "mies", "17.07.1994", "Helsinki", CURRENT_TIMESTAMP, 1);
 ```
