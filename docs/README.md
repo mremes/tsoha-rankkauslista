@@ -36,7 +36,7 @@ python run.py
 
 3. Rekisteröi itsesi järjestelmään "Rekisteröidy" -painikkeesta.
 
-Jos haluat käyttää [Herokussa toimivaa versiota], niin toimi näin:
+Jos haluat käyttää [Herokussa toimivaa versiota](https://tsoha-rankkauslista.herokuapp.com/), niin toimi näin:
 
 1. Valitse jotkin käyttäjätunnukset tämän tiedoston yllä olevasta käyttäjätunnuslistasta.
 
