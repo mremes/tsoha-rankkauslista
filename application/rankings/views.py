@@ -7,9 +7,10 @@ import application.utils as utils
 from application import login_required
 
 
-@app.route('/players/<playerid>/add_to_list', methods=['GET'])
+@app.route('/lists/add_player', methods=['GET'])
 @login_required(["PLAYER", "ADMIN"])
-def add_to_ranking_list(playerid):
+def add_to_ranking_list():
+    playerid = request.args.get('playerid')
     listid = request.args.get('listid')
     player = Player.query.get(playerid)
 
@@ -39,27 +40,7 @@ def add_to_ranking_list(playerid):
                            lists=lists)
 
 
-@app.route('/players/<playerid>/retire', methods=['GET'])
-@login_required(["PLAYER", "ADMIN"])
-def retire_player(playerid):
-    player_data = Player.query.get(playerid)
-
-    if not player_data:
-        flash('Pelaajaa tunnuksella %s ei ole olemassa.' % playerid)
-        return redirect(utils.get_next_url())
-
-    rankings = Ranking.query.filter_by(player_id=player_data.id).all()
-    for ranking in rankings:
-        RankingRecord.query.filter_by(ranking_id=ranking.id).delete()
-    Ranking.query.filter_by(player_id=player_data.id).delete()
-    db.session().delete(player_data)
-    db.session.commit()
-
-    flash('Onnistuneesti poistettiin pelaaja %s.' % player_data.name)
-    return redirect(url_for('index'))
-
-
-@app.route('/lists/<ranking_list_id>', methods=['GET'])
+@app.route('/lists/<int:ranking_list_id>', methods=['GET'])
 def get_list_info(ranking_list_id):
     rlist = RankingList.query.get(ranking_list_id)
 
@@ -71,7 +52,7 @@ def get_list_info(ranking_list_id):
     return render_template('rankings/ranking_list_info.html', data=[rlist])
 
 
-@app.route('/create_ranking_list', methods=['GET', 'POST'])
+@app.route('/lists/create', methods=['GET', 'POST'])
 @login_required(["ADMIN"])
 def create_ranking_list():
     form = RankingListForm(request.form)

@@ -150,7 +150,7 @@ def tournament_ready():
     return render_template('tournaments/tournament_ready.html', data=data)
 
 
-@app.route('/tournament/<tournament_id>', methods=['GET'])
+@app.route('/tournament/<int:tournament_id>', methods=['GET'])
 def get_tournament_info(tournament_id):
     if not tournament_id:
         flash('Turnaus_id ei voi olla tyhjä.')
@@ -196,7 +196,7 @@ def get_tournament_info(tournament_id):
                            players_info=players)
 
 
-@app.route('/tournament/<tournament_id>/set_results', methods=['GET', 'POST'])
+@app.route('/tournament/<int:tournament_id>/set_results', methods=['GET', 'POST'])
 @login_required(["TOURNAMENT", "ADMIN"])
 def tournament_set_results(tournament_id):
     if not tournament_id:
@@ -229,7 +229,7 @@ def tournament_set_results(tournament_id):
                            form=form)
 
 
-@app.route('/tournament/<tournament_id>/set_ranking_points', methods=["GET", "POST"])
+@app.route('/tournament/<int:tournament_id>/set_ranking_points', methods=["GET", "POST"])
 @login_required(["ADMIN"])
 def tournament_set_ranking_points(tournament_id):
     if not tournament_id:
@@ -260,7 +260,7 @@ def tournament_set_ranking_points(tournament_id):
                            form=form)
 
 
-@app.route('/tournament/<tournament_id>/complete', methods=["POST"])
+@app.route('/tournament/<int:tournament_id>/complete', methods=["POST"])
 @login_required(["TOURNAMENT", "ADMIN"])
 def complete_tournament(tournament_id):
     if not tournament_id:
@@ -278,7 +278,7 @@ def complete_tournament(tournament_id):
     return redirect(url_for('get_tournament_info', tournament_id=tournament_id))
 
 
-@app.route('/tournament/<tournament_id>/delete', methods=["POST"])
+@app.route('/tournament/<int:tournament_id>/delete', methods=["POST"])
 @login_required(["TOURNAMENT", "ADMIN"])
 def delete_tournament(tournament_id):
     if not tournament_id:
@@ -300,7 +300,7 @@ def delete_tournament(tournament_id):
     return redirect(utils.get_next_url())
 
 
-@app.route('/tournament/<tournament_id>/edit', methods=["GET", "POST"])
+@app.route('/tournament/<int:tournament_id>/edit', methods=["GET", "POST"])
 @login_required(["TOURNAMENT", "ADMIN"])
 def tournament_edit_details(tournament_id):
     if not tournament_id:
