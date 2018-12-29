@@ -22,7 +22,7 @@ Tämä repositorio on tarkoitettu [Aineopintojen harjoitustyö: Tietokantasovell
 * [Käyttäjäryhmät](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/user_stories.md#k%C3%A4ytt%C3%A4j%C3%A4ryhm%C3%A4t)
 * [CREATE TABLE-lauseet](https://github.com/mremes/tsoha-rankkauslista/blob/master/docs/create_statements.sql)
 
-## Asennusohje
+## Asennusohje - oma ympäristö
 Voit asentaa tämän sovelluksen omalle koneellesi. Oletetaan, että sinulla on käytössäsi Pythonista versio 3.6.6 tai uudempi.
 
 Aja seuraavat komennot hakemiston juuresta.
@@ -32,16 +32,27 @@ Aja seuraavat komennot hakemiston juuresta.
 pip install -r requirements.txt
 ```
 
-## Käyttöohje
+## Käynnistysohje - oma ympäristö
 
 1. Aja sovellus (hakemiston juuresta)
 ```
 python run.py
 ```
 
-2. Käytä sovellusta Internet-selaimella osoitteessa [http://localhost:5000](http://localhost:5000).
+## Asennus ja käynnistys Docker-konttina
+Vaihtoehtoisesti voit käynnistää sovelluksen Docker-konttina käyttäen juuressa olevaa `Dockerfile`-tiedostoa. Jos sinulla on `docker`-komentorivityökalut asennettuna niin aja seuraavat komennot projektin juuressa:
 
-3. Rekisteröi itsesi järjestelmään "Rekisteröidy" -painikkeesta.
+```
+docker build . -t tsoha
+docker run -p 127.0.0.1:5000:5000 --name tsoha tsoha
+```
+
+## Käyttöohjeet
+Kun olet käynnistänyt lokaalin instanssin sovelluksesta, pääset siihen käsiksi seuraavasti:
+
+1. Käytä sovellusta Internet-selaimella osoitteessa [http://localhost:5000](http://localhost:5000).
+
+2. Rekisteröi itsesi järjestelmään "Rekisteröidy" -painikkeesta.
 
 Jos haluat käyttää [Herokussa toimivaa versiota](https://tsoha-rankkauslista.herokuapp.com/), niin toimi näin:
 
