@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import flash, redirect, url_for, render_template, request, abort
 from application import app, db
 from application.auth.models.user import User

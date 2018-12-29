@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 from flask import Flask, flash, url_for, redirect

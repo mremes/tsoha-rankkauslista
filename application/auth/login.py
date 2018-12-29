@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import flask_login
 from application.auth.models.user import User
 login_manager = flask_login.LoginManager()
