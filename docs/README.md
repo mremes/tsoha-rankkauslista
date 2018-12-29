@@ -47,6 +47,12 @@ docker build . -t tsoha
 docker run -p 127.0.0.1:5000:5000 --name tsoha tsoha
 ```
 
+## Docker-imagen lataus ja käynnistys
+
+```
+docker run -d -p 127.0.0.1:5000:5000 --name tsoha mrremes/tsoha-rankkauslista:latest
+```
+
 ## Käyttöohjeet
 Kun olet käynnistänyt lokaalin instanssin sovelluksesta, pääset siihen käsiksi seuraavasti:
 
